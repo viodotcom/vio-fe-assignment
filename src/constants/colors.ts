@@ -1,0 +1,9 @@
+export const BLACK = "#36424F";
+export const HEAVY_BLACK = "#2A333D";
+export const WHITE = "#FFF";
+export const BORDER_GRAY = "#A0BCDB";
+export const LIGHT_BORDER_GRAY = "#EFF2F6";
+export const BLUE = "#0077FF";
+export const LIGHT_BLUE = "#F7FBFF";
+export const LIGHT_BLUE_BORDER = "#DAE9FA";
+export const RED = "#D83B3B";

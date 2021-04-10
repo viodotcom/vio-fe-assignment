@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render properly 1`] = `
+<div
+  class="sc-gsDJrp bPSJda"
+  id="root"
+>
+  <div
+    class="sc-dkPtyc gtFUqs"
+  >
+    <svg
+      class="sc-hKwCoD dEMfLC"
+    >
+      logo.svg
+    </svg>
+    <h2
+      class="sc-jRQAMF YMegA"
+    >
+      Find the perfect 
+      <br />
+       deal, always.
+    </h2>
+    <div
+      class="sc-bdvvaa iKIrFQ"
+    >
+      Banana
+    </div>
+    <svg
+      class="sc-eCImvq iHwWNr"
+    >
+      partners.svg
+    </svg>
+  </div>
+</div>
+`;

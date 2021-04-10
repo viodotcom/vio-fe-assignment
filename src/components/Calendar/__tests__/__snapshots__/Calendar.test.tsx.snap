@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Calendar /> should render properly 1`] = `
+<div
+  class="sc-bdvvaa gBaEPd"
+>
+  <svg>
+    calendar.svg
+  </svg>
+  <strong>
+    Check-in
+  </strong>
+  <span
+    class="sc-gsDJrp cEMzuB"
+  />
+  <strong>
+    Check-out
+  </strong>
+</div>
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField /> should render properly 1`] = `
+<div
+  class="sc-bdvvaa jSVYap"
+>
+  <input
+    class="sc-hKwCoD hHLQXS"
+    type="text"
+  />
+</div>
+`;

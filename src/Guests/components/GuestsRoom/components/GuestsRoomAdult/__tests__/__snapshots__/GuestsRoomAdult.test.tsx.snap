@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GuestsRoomAdult /> should render properly 1`] = `
+<div
+  class="sc-eCImvq guCNbL"
+>
+  <span
+    class="sc-jRQAMF bgpgfc"
+  >
+    Adults
+  </span>
+  <div
+    class="sc-gKckTs jduWvm"
+  >
+    <button
+      class="sc-bdvvaa eWedmN"
+    >
+      <svg>
+        minus.svg
+      </svg>
+    </button>
+    <span
+      class="sc-jRQAMF bgpgfc"
+    >
+      0
+    </span>
+    <button
+      class="sc-bdvvaa eWedmN"
+    >
+      <svg>
+        plus.svg
+      </svg>
+    </button>
+  </div>
+</div>
+`;
