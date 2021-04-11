@@ -29,10 +29,10 @@ describe("<GuestsRoomAdult />", () => {
 
     expect(adultsCounter.textContent).toBe("0");
 
-    fireEvent.click(screen.getByTestId("add-adult-button"));
+    fireEvent.click(screen.getByTestId("add-adult-0-button"));
     expect(adultsCounter.textContent).toBe("1");
 
-    fireEvent.click(screen.getByTestId("remove-adult-button"));
+    fireEvent.click(screen.getByTestId("remove-adult-0-button"));
     expect(adultsCounter.textContent).toBe("0");
   });
 });

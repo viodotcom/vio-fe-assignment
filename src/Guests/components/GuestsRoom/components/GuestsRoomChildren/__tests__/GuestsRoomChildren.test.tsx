@@ -29,10 +29,10 @@ describe("<GuestsRoomChildren />", () => {
 
     expect(childrenCounter.textContent).toBe("0");
 
-    fireEvent.click(screen.getByTestId("add-child-button"));
+    fireEvent.click(screen.getByTestId("add-child-0-button"));
     expect(childrenCounter.textContent).toBe("1");
 
-    fireEvent.click(screen.getByTestId("remove-child-button"));
+    fireEvent.click(screen.getByTestId("remove-child-0-button"));
     expect(childrenCounter.textContent).toBe("0");
   });
 
@@ -45,8 +45,8 @@ describe("<GuestsRoomChildren />", () => {
       </Provider>
     );
 
-    fireEvent.click(screen.getByTestId("add-child-button"));
-    fireEvent.change(screen.getByTestId("child-0-select"), {
+    fireEvent.click(screen.getByTestId("add-child-0-button"));
+    fireEvent.change(screen.getByTestId("child-0-0-select"), {
       target: { value: childAge },
     });
 

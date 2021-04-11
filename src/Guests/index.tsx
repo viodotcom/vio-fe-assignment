@@ -28,6 +28,18 @@ const Guests = ({ onClose }: GuestsProps): ReactElement => {
     onClose();
   };
 
+  const getSearchButtonText = (): string => {
+    const roomsText = rooms.length > 1 ? " rooms" : " room";
+    const totalGuests = rooms.reduce((acc, room) => {
+      acc += room.adultsCounter + room.children.length;
+      return acc;
+    }, 0);
+    const guestsText =
+      totalGuests > 1 || totalGuests === 0 ? " guests" : " guest";
+
+    return `Search ${rooms.length + roomsText} • ${totalGuests + guestsText}`;
+  };
+
   return (
     <Container>
       <NavBar>
@@ -36,16 +48,16 @@ const Guests = ({ onClose }: GuestsProps): ReactElement => {
       </NavBar>
       <Content>
         {rooms.map((room, index) => (
-          <GuestsRoom key={`room-${index}`} position={index} room={room} />
+          <GuestsRoom key={`room-${index}`} position={index} />
         ))}
         <Button onClick={() => dispatch(addRoom())} theme="secondary">
           + Add Room
         </Button>
       </Content>
       <Footer>
-        <Button onClick={handleClose}>
+        <Button onClick={handleClose} dataTestId="search-button">
           <IconSearch />
-          Search
+          {getSearchButtonText()}
         </Button>
       </Footer>
     </Container>

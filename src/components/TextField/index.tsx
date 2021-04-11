@@ -24,7 +24,7 @@ const TextField = ({
   onClick,
 }: TextFieldProps): ReactElement => (
   <InputContainer>
-    {leftIcon && <LeftIcon>{leftIcon}</LeftIcon>}
+    {leftIcon && <LeftIcon onClick={onClick}>{leftIcon}</LeftIcon>}
     <Input
       type={type}
       placeholder={placeholder}

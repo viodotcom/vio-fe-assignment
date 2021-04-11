@@ -55,7 +55,7 @@ exports[`<Guests /> should render properly 1`] = `
         >
           <button
             class="sc-bdvvaa eWedmN"
-            data-testid="remove-adult-button"
+            data-testid="remove-adult-0-button"
           >
             <svg>
               minus.svg
@@ -69,7 +69,7 @@ exports[`<Guests /> should render properly 1`] = `
           </span>
           <button
             class="sc-bdvvaa eWedmN"
-            data-testid="add-adult-button"
+            data-testid="add-adult-0-button"
           >
             <svg>
               plus.svg
@@ -90,7 +90,7 @@ exports[`<Guests /> should render properly 1`] = `
         >
           <button
             class="sc-bdvvaa eWedmN"
-            data-testid="button"
+            data-testid="remove-child-0-button"
           >
             <svg>
               minus.svg
@@ -98,12 +98,13 @@ exports[`<Guests /> should render properly 1`] = `
           </button>
           <span
             class="sc-jRQAMF bgpgfc"
+            data-testid="children-counter"
           >
             0
           </span>
           <button
             class="sc-bdvvaa eWedmN"
-            data-testid="button"
+            data-testid="add-child-0-button"
           >
             <svg>
               plus.svg
@@ -127,12 +128,12 @@ exports[`<Guests /> should render properly 1`] = `
   >
     <button
       class="sc-bdvvaa ktiVbg"
-      data-testid="button"
+      data-testid="search-button"
     >
       <svg>
         search.svg
       </svg>
-      Search
+      Search 1 room • 0 guests
     </button>
   </footer>
 </div>

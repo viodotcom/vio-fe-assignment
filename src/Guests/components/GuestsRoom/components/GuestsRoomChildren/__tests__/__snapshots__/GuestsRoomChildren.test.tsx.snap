@@ -14,7 +14,7 @@ exports[`<GuestsRoomChildren /> should render properly 1`] = `
   >
     <button
       class="sc-bdvvaa eWedmN"
-      data-testid="remove-child-button"
+      data-testid="remove-child-0-button"
     >
       <svg>
         minus.svg
@@ -28,7 +28,7 @@ exports[`<GuestsRoomChildren /> should render properly 1`] = `
     </span>
     <button
       class="sc-bdvvaa eWedmN"
-      data-testid="add-child-button"
+      data-testid="add-child-0-button"
     >
       <svg>
         plus.svg

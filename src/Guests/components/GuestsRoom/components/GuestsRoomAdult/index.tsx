@@ -25,7 +25,7 @@ const GuestsRoomAdult = ({ position }: GuestsRoomAdultsProps): ReactElement => {
         <Button
           onClick={() => dispatch(removeAdult(position))}
           theme="secondary"
-          dataTestId="remove-adult-button"
+          dataTestId={`remove-adult-${position}-button`}
         >
           <IconMinus />
         </Button>
@@ -33,7 +33,7 @@ const GuestsRoomAdult = ({ position }: GuestsRoomAdultsProps): ReactElement => {
         <Button
           onClick={() => dispatch(addAdult(position))}
           theme="secondary"
-          dataTestId="add-adult-button"
+          dataTestId={`add-adult-${position}-button`}
         >
           <IconPlus />
         </Button>

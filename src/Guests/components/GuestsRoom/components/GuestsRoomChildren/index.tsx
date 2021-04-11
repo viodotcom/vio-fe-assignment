@@ -42,7 +42,7 @@ const GuestsRoomChildren = ({
           <Button
             onClick={() => dispatch(removeChild(position))}
             theme="secondary"
-            dataTestId="remove-child-button"
+            dataTestId={`remove-child-${position}-button`}
           >
             <IconMinus />
           </Button>
@@ -52,7 +52,7 @@ const GuestsRoomChildren = ({
           <Button
             onClick={() => dispatch(addChild(position))}
             theme="secondary"
-            dataTestId="add-child-button"
+            dataTestId={`add-child-${position}-button`}
           >
             <IconPlus />
           </Button>
@@ -60,11 +60,11 @@ const GuestsRoomChildren = ({
       </Guest>
       <KidsContainer>
         {children.map((child, index) => (
-          <Guest key={`child-${index}`}>
+          <Guest key={`child-${index}-${position}`}>
             <GuestText>Child {index + 1} age</GuestText>
             <GuestButtonGroup>
               <Select
-                dataTestId={`child-${index}-select`}
+                dataTestId={`child-${index}-${position}-select`}
                 value={String(child.age)}
                 onChange={(event) =>
                   dispatch(
@@ -79,14 +79,17 @@ const GuestsRoomChildren = ({
                 <Option value="">Age</Option>
                 {[
                   ...Array.from(Array(17).keys()).map((age) => (
-                    <Option key={`child-age-${age}`} value={String(age)}>
+                    <Option
+                      key={`child-age-${age}-${position}-option`}
+                      value={String(age)}
+                    >
                       {age}
                     </Option>
                   )),
                 ]}
               </Select>
               <IconRemoveChild
-                data-testid={`remove-child-${index}-icon`}
+                data-testid={`remove-child-${index}-${position}-icon`}
                 onClick={() =>
                   dispatch(
                     removeSpecificChild({
