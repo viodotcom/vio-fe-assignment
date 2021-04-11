@@ -6,6 +6,7 @@ exports[`<Select /> should render properly 1`] = `
 >
   <select
     class="sc-gsDJrp doAmLO"
+    data-testid="select"
   >
     <option
       value=""

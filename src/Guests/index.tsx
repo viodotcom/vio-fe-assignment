@@ -1,5 +1,7 @@
 import React, { ReactElement } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import { StoreStateType, addRoom, resetStore } from "store";
 import Button from "components/Button";
 import { ReactComponent as IconSearch } from "assets/search.svg";
 
@@ -18,21 +20,30 @@ interface GuestsProps {
 }
 
 const Guests = ({ onClose }: GuestsProps): ReactElement => {
+  const rooms = useSelector((state: StoreStateType) => state.rooms);
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(resetStore());
+    onClose();
+  };
+
   return (
     <Container>
       <NavBar>
-        <IconClose onClick={onClose} />
+        <IconClose onClick={handleClose} data-testid="icon-close" />
         <NavBarTitle>Who is staying</NavBarTitle>
       </NavBar>
       <Content>
-        <GuestsRoom />
-        <GuestsRoom />
-        <Button onClick={onClose} theme="secondary">
+        {rooms.map((room, index) => (
+          <GuestsRoom key={`room-${index}`} position={index} room={room} />
+        ))}
+        <Button onClick={() => dispatch(addRoom())} theme="secondary">
           + Add Room
         </Button>
       </Content>
       <Footer>
-        <Button onClick={onClose}>
+        <Button onClick={handleClose}>
           <IconSearch />
           Search
         </Button>

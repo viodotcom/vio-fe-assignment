@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GuestsRoom /> should render properly 1`] = `
+<div
+  class="sc-gsDJrp dwyZHA"
+  data-testid="guests-room"
+>
+  <div
+    class="sc-dkPtyc iQYZgR"
+  >
+    <h4
+      class="sc-hKwCoD cLeDZh"
+    >
+      Room 
+      1
+    </h4>
+    <button
+      class="sc-bdvvaa dUCPep"
+      data-testid="button"
+    >
+      Remove room
+    </button>
+  </div>
+  <div
+    class="sc-eCImvq guCNbL"
+  >
+    <span
+      class="sc-jRQAMF bgpgfc"
+    >
+      Adults
+    </span>
+    <div
+      class="sc-gKckTs jduWvm"
+    >
+      <button
+        class="sc-bdvvaa eWedmN"
+        data-testid="remove-adult-button"
+      >
+        <svg>
+          minus.svg
+        </svg>
+      </button>
+      <span
+        class="sc-jRQAMF bgpgfc"
+        data-testid="adults-counter"
+      >
+        0
+      </span>
+      <button
+        class="sc-bdvvaa eWedmN"
+        data-testid="add-adult-button"
+      >
+        <svg>
+          plus.svg
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    class="sc-eCImvq guCNbL"
+  >
+    <span
+      class="sc-jRQAMF bgpgfc"
+    >
+      Children
+    </span>
+    <div
+      class="sc-gKckTs jduWvm"
+    >
+      <button
+        class="sc-bdvvaa eWedmN"
+        data-testid="button"
+      >
+        <svg>
+          minus.svg
+        </svg>
+      </button>
+      <span
+        class="sc-jRQAMF bgpgfc"
+      >
+        0
+      </span>
+      <button
+        class="sc-bdvvaa eWedmN"
+        data-testid="button"
+      >
+        <svg>
+          plus.svg
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    class="sc-iCfLBT bZPXmC"
+  />
+</div>
+`;

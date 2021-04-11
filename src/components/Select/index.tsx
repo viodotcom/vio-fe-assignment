@@ -5,20 +5,30 @@ import { Container, StyledSelect } from "./styles";
 interface OptionProps {
   value: string;
 }
+interface SelectProps {
+  onChange: (event) => void;
+  value?: string;
+  dataTestId?: string;
+}
 
-const Select: FunctionComponent = ({ children }): ReactElement => {
+const Select: FunctionComponent<SelectProps> = ({
+  children,
+  onChange,
+  value = "",
+  dataTestId = "select",
+}): ReactElement => {
   return (
     <Container>
-      <StyledSelect>{children}</StyledSelect>
+      <StyledSelect data-testid={dataTestId} value={value} onChange={onChange}>
+        {children}
+      </StyledSelect>
     </Container>
   );
 };
 
-const Option: FunctionComponent<OptionProps> = ({
+export const Option: FunctionComponent<OptionProps> = ({
   children,
   value,
 }): ReactElement => <option value={value}>{children}</option>;
-
-Select.Option = Option;
 
 export default Select;

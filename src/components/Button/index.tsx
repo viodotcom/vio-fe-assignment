@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick: () => void;
   outline?: boolean;
   block?: boolean;
+  dataTestId?: string;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
@@ -15,6 +16,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   onClick,
   outline = false,
   block = true,
+  dataTestId = "button",
 }): ReactElement => {
   return (
     <StyledButton
@@ -22,6 +24,7 @@ const Button: FunctionComponent<ButtonProps> = ({
       theme={theme}
       outline={outline}
       block={block}
+      data-testid={dataTestId}
     >
       {children}
     </StyledButton>

@@ -2,31 +2,106 @@
 
 exports[`<App /> should render properly 1`] = `
 <div
-  class="sc-gsDJrp bPSJda"
+  class="sc-dlVyqM jUQkdt"
   id="root"
 >
   <div
-    class="sc-dkPtyc gtFUqs"
+    class="sc-kfPtPH ZlHmY"
   >
     <svg
-      class="sc-hKwCoD dEMfLC"
+      class="sc-fKVsgm kfdVmo"
     >
       logo.svg
     </svg>
     <h2
-      class="sc-jRQAMF YMegA"
+      class="sc-iwjezw cARJhL"
     >
       Find the perfect 
       <br />
        deal, always.
     </h2>
     <div
-      class="sc-bdvvaa iKIrFQ"
+      class="sc-bdvvaa dfsOak"
     >
-      Banana
+      <form>
+        <fieldset
+          class="sc-cxpRKc fBznUX"
+        >
+          <div
+            class="sc-gsDJrp iOGeOr"
+          >
+            <i
+              class="sc-dkPtyc dBwcwA"
+            >
+              <svg>
+                pin.svg
+              </svg>
+            </i>
+            <input
+              class="sc-eCImvq fOIGbL"
+              placeholder="Type city, place, or hotel name"
+              type="text"
+            />
+            <i
+              class="sc-hKwCoD cXzwwS"
+            >
+              <svg>
+                cursor.svg
+              </svg>
+            </i>
+          </div>
+        </fieldset>
+        <fieldset
+          class="sc-cxpRKc fBznUX"
+        >
+          <div
+            class="sc-jRQAMF ilBMk"
+          >
+            <svg>
+              calendar.svg
+            </svg>
+            <strong>
+              Check-in
+            </strong>
+            <span
+              class="sc-gKckTs JtJqW"
+            />
+            <strong>
+              Check-out
+            </strong>
+          </div>
+          <div
+            class="sc-llYToB bcLofJ"
+          >
+            <div
+              class="sc-gsDJrp iOGeOr"
+            >
+              <i
+                class="sc-dkPtyc dBwcwA"
+              >
+                <svg>
+                  guests.svg
+                </svg>
+              </i>
+              <input
+                class="sc-eCImvq izJtxO"
+                max="9"
+                min="1"
+                type="number"
+              />
+            </div>
+          </div>
+        </fieldset>
+        <button
+          class="sc-iCfLBT bhIUEc"
+          data-testid="button"
+        >
+          Search
+        </button>
+      </form>
     </div>
     <svg
-      class="sc-eCImvq iHwWNr"
+      class="sc-bBHwJV korfVF"
     >
       partners.svg
     </svg>

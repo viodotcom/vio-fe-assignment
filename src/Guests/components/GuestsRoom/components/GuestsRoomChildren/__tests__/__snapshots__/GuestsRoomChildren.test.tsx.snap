@@ -1,34 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GuestsRoomAdult /> should render properly 1`] = `
+exports[`<GuestsRoomChildren /> should render properly 1`] = `
 <div
-  class="sc-eCImvq guCNbL"
+  class="sc-gKckTs dPQnl"
 >
   <span
-    class="sc-jRQAMF bgpgfc"
+    class="sc-iCfLBT JjZsB"
   >
-    Adults
+    Children
   </span>
   <div
-    class="sc-gKckTs jduWvm"
+    class="sc-furvIG cWguzl"
   >
     <button
       class="sc-bdvvaa eWedmN"
-      data-testid="remove-adult-button"
+      data-testid="remove-child-button"
     >
       <svg>
         minus.svg
       </svg>
     </button>
     <span
-      class="sc-jRQAMF bgpgfc"
-      data-testid="adults-counter"
+      class="sc-iCfLBT JjZsB"
+      data-testid="children-counter"
     >
       0
     </span>
     <button
       class="sc-bdvvaa eWedmN"
-      data-testid="add-adult-button"
+      data-testid="add-child-button"
     >
       <svg>
         plus.svg
