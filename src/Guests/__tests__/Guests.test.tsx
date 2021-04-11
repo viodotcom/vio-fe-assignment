@@ -2,9 +2,22 @@ import React from "react";
 import { Provider } from "react-redux";
 import { render, fireEvent, screen } from "@testing-library/react";
 
+import { serializeRooms } from "helpers";
 import store, { resetStore } from "store";
 
 import Guests from "..";
+
+jest.mock("helpers", () => ({
+  serializeRooms: jest.fn(),
+}));
+
+const mockedReplace = jest.fn();
+
+Object.defineProperty(window, "location", {
+  value: {
+    replace: mockedReplace,
+  },
+});
 
 describe("<Guests />", () => {
   beforeEach(() => store.dispatch(resetStore()));
@@ -29,6 +42,7 @@ describe("<Guests />", () => {
     fireEvent.click(screen.getByTestId("icon-close"));
 
     expect(mockedOnClose).toHaveBeenCalled();
+    expect(mockedReplace).toHaveBeenCalled();
   });
 
   it("should be able to add more rooms", () => {
@@ -108,6 +122,28 @@ describe("<Guests />", () => {
         target: { value: 0 },
       });
       expect(searchButton).not.toHaveAttribute("disabled");
+    });
+
+    it("should emit a search", () => {
+      const mockedOnClose = jest.fn();
+
+      render(
+        <Provider store={store}>
+          <Guests onClose={mockedOnClose} />
+        </Provider>
+      );
+
+      const searchButton = screen.getByTestId("search-button");
+
+      fireEvent.click(screen.getByTestId("add-child-0-button"));
+      fireEvent.change(screen.getByTestId("child-0-0-select"), {
+        target: { value: 0 },
+      });
+      fireEvent.click(searchButton);
+
+      expect(serializeRooms).toHaveBeenCalledWith(store.getState().rooms);
+      expect(mockedOnClose).toHaveBeenCalled();
+      expect(mockedReplace).toHaveBeenCalled();
     });
   });
 });

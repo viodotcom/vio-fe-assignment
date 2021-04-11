@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> should render properly 1`] = `
+<div
+  class="sc-bdvvaa dfsOak"
+>
+  <form>
+    <fieldset
+      class="sc-crHlIS gYBSAF"
+    >
+      <div
+        class="sc-gsDJrp iOGeOr"
+      >
+        <i
+          class="sc-dkPtyc dBwcwA"
+        >
+          <svg>
+            pin.svg
+          </svg>
+        </i>
+        <input
+          class="sc-eCImvq fOIGbL"
+          placeholder="Type city, place, or hotel name"
+          type="text"
+          value=""
+        />
+        <i
+          class="sc-hKwCoD cXzwwS"
+        >
+          <svg>
+            cursor.svg
+          </svg>
+        </i>
+      </div>
+    </fieldset>
+    <fieldset
+      class="sc-crHlIS gYBSAF"
+    >
+      <div
+        class="sc-jRQAMF ilBMk"
+      >
+        <svg>
+          calendar.svg
+        </svg>
+        <strong>
+          Check-in
+        </strong>
+        <span
+          class="sc-gKckTs JtJqW"
+        />
+        <strong>
+          Check-out
+        </strong>
+      </div>
+      <div
+        class="sc-egiSv izdmIH"
+      >
+        <div
+          class="sc-gsDJrp iOGeOr"
+        >
+          <i
+            class="sc-dkPtyc dBwcwA"
+          >
+            <svg>
+              guests.svg
+            </svg>
+          </i>
+          <input
+            class="sc-eCImvq izJtxO"
+            max="9"
+            min="1"
+            type="number"
+            value="1"
+          />
+        </div>
+      </div>
+    </fieldset>
+    <button
+      class="sc-iCfLBT fgyNbE"
+      data-testid="button"
+    >
+      Search
+    </button>
+  </form>
+</div>
+`;

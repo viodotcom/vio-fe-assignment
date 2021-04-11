@@ -1,4 +1,5 @@
 import store, {
+  initializeStore,
   resetStore,
   addRoom,
   removeRoom,
@@ -198,5 +199,32 @@ describe("Rooms Store", () => {
     rooms = store.getState().rooms;
 
     expect(rooms.length).toBe(1);
+  });
+
+  it("should initialize the store with a given serialized string", () => {
+    let { rooms } = store.getState();
+
+    expect(rooms.length).toBe(1);
+
+    store.dispatch(initializeStore("1:2,3|2:4|4"));
+
+    rooms = store.getState().rooms;
+    const firstRoom = rooms[0];
+    const secondRoom = rooms[1];
+    const thirdRoom = rooms[2];
+
+    expect(rooms.length).toBe(3);
+
+    expect(firstRoom.adultsCounter).toBe(1);
+    expect(firstRoom.children).toHaveLength(2);
+    expect(firstRoom.children[0].age).toBe(2);
+    expect(firstRoom.children[1].age).toBe(3);
+
+    expect(secondRoom.adultsCounter).toBe(2);
+    expect(secondRoom.children).toHaveLength(1);
+    expect(secondRoom.children[0].age).toBe(4);
+
+    expect(thirdRoom.adultsCounter).toBe(4);
+    expect(thirdRoom.children).toHaveLength(0);
   });
 });

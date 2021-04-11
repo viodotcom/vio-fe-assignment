@@ -1,8 +1,9 @@
 import React, { ReactElement } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { StoreStateType, addRoom, resetStore } from "store";
 import Button from "components/Button";
+import { serializeRooms } from "helpers";
+import { StoreStateType, addRoom, resetStore } from "store";
 import { ReactComponent as IconSearch } from "assets/search.svg";
 
 import GuestsRoom from "./components/GuestsRoom";
@@ -31,8 +32,16 @@ const Guests = ({ onClose }: GuestsProps): ReactElement => {
   }, 0);
   const isSearchButtonDisabled = Boolean(numberOfChildWithoutAge);
 
-  const handleClose = () => {
+  const handleClose = (): void => {
+    window.location.replace("/");
     dispatch(resetStore());
+    onClose();
+  };
+
+  const handleSearch = (): void => {
+    window.location.replace(
+      window.location.origin + "?rooms=" + serializeRooms(rooms)
+    );
     onClose();
   };
 
@@ -67,7 +76,7 @@ const Guests = ({ onClose }: GuestsProps): ReactElement => {
       </Content>
       <Footer>
         <Button
-          onClick={handleClose}
+          onClick={handleSearch}
           dataTestId="search-button"
           disabled={isSearchButtonDisabled}
         >

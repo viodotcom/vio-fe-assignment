@@ -11,6 +11,8 @@ interface TextFieldProps {
   max?: number;
   readonly?: boolean;
   onClick?: () => void;
+  onChange: () => void;
+  value?: string;
 }
 
 const TextField = ({
@@ -22,6 +24,8 @@ const TextField = ({
   max,
   readonly,
   onClick,
+  onChange,
+  value = "",
 }: TextFieldProps): ReactElement => (
   <InputContainer>
     {leftIcon && <LeftIcon onClick={onClick}>{leftIcon}</LeftIcon>}
@@ -34,6 +38,8 @@ const TextField = ({
       max={max}
       readonly={readonly}
       onClick={onClick}
+      onChange={onChange}
+      value={value}
     />
     {rightIcon && <RightIcon>{rightIcon}</RightIcon>}
   </InputContainer>

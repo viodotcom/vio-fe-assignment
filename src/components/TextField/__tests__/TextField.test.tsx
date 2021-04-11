@@ -5,13 +5,15 @@ import TextField from "..";
 
 describe("<TextField />", () => {
   it("should render properly", () => {
-    const { container } = render(<TextField />);
+    const { container } = render(<TextField onChange={() => {}} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it("should be able to render a number", () => {
     const placeholder = "Guests";
-    render(<TextField type="number" placeholder={placeholder} />);
+    render(
+      <TextField onChange={() => {}} type="number" placeholder={placeholder} />
+    );
     expect(screen.getByPlaceholderText(placeholder).getAttribute("type")).toBe(
       "number"
     );
@@ -21,7 +23,13 @@ describe("<TextField />", () => {
     const mockedOnClick = jest.fn();
     const placeholder = "Guests";
 
-    render(<TextField onClick={mockedOnClick} placeholder={placeholder} />);
+    render(
+      <TextField
+        onChange={() => {}}
+        onClick={mockedOnClick}
+        placeholder={placeholder}
+      />
+    );
 
     fireEvent.click(screen.getByPlaceholderText(placeholder));
 

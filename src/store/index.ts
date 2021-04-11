@@ -1,16 +1,16 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
+export type ChildType = {
+  age: number | null;
+};
+
 export type RoomType = {
   maxNumberOfAdults: number;
   maxNumberOfChildren: number;
   maxOccupancy: number;
   adultsCounter: number;
   totalGuests: number;
-  children: [
-    {
-      age: number | null;
-    }?
-  ];
+  children: ChildType[];
 };
 
 export type StoreStateType = {
@@ -36,6 +36,30 @@ const counterSlice = createSlice({
   name: "rooms",
   initialState,
   reducers: {
+    initializeStore: (state, action): void => {
+      if (Boolean(action.payload)) {
+        const splitedRooms = action.payload?.split("|") || [];
+        const rooms = splitedRooms?.map(
+          (room): RoomType => {
+            const guests = room.split(":");
+            const adultsCounter = Number(guests[0]);
+            const children =
+              guests[1]?.split(",")?.reduce((arr, age): ChildType[] => {
+                arr.push({ age: Number(age) });
+                return arr;
+              }, []) || [];
+
+            return {
+              ...initialRoomsState,
+              adultsCounter,
+              children,
+            };
+          }
+        );
+
+        state.rooms = rooms;
+      }
+    },
     resetStore: (state): void => {
       state.rooms = [initialRoomsState];
     },
@@ -114,6 +138,7 @@ const counterSlice = createSlice({
 });
 
 export const {
+  initializeStore,
   resetStore,
   addRoom,
   removeRoom,

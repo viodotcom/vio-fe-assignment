@@ -2,48 +2,49 @@
 
 exports[`<App /> should render properly 1`] = `
 <div
-  class="sc-dlVyqM jUQkdt"
+  class="sc-hBURRC fPbypC"
   id="root"
 >
   <div
-    class="sc-kfPtPH ZlHmY"
+    class="sc-fotPbf edKkdo"
   >
     <svg
-      class="sc-fKVsgm kfdVmo"
+      class="sc-fFehDp gOYNzr"
     >
       logo.svg
     </svg>
     <h2
-      class="sc-iwjezw cARJhL"
+      class="sc-ieebsP cVEnuv"
     >
       Find the perfect 
       <br />
        deal, always.
     </h2>
     <div
-      class="sc-bdvvaa dfsOak"
+      class="sc-dlVyqM fPlOTZ"
     >
       <form>
         <fieldset
-          class="sc-cxpRKc fBznUX"
+          class="sc-dJjZJu cMwvGz"
         >
           <div
-            class="sc-gsDJrp iOGeOr"
+            class="sc-kfPtPH dYvmmi"
           >
             <i
-              class="sc-dkPtyc dBwcwA"
+              class="sc-fKVsgm pSvAj"
             >
               <svg>
                 pin.svg
               </svg>
             </i>
             <input
-              class="sc-eCImvq fOIGbL"
+              class="sc-iwjezw kwSriW"
               placeholder="Type city, place, or hotel name"
               type="text"
+              value=""
             />
             <i
-              class="sc-hKwCoD cXzwwS"
+              class="sc-bBHwJV hEXRLh"
             >
               <svg>
                 cursor.svg
@@ -52,10 +53,10 @@ exports[`<App /> should render properly 1`] = `
           </div>
         </fieldset>
         <fieldset
-          class="sc-cxpRKc fBznUX"
+          class="sc-dJjZJu cMwvGz"
         >
           <div
-            class="sc-jRQAMF ilBMk"
+            class="sc-cxpRKc bhQfma"
           >
             <svg>
               calendar.svg
@@ -64,36 +65,37 @@ exports[`<App /> should render properly 1`] = `
               Check-in
             </strong>
             <span
-              class="sc-gKckTs JtJqW"
+              class="sc-llYToB fxYTXF"
             />
             <strong>
               Check-out
             </strong>
           </div>
           <div
-            class="sc-llYToB bcLofJ"
+            class="sc-hGPAah HFxPm"
           >
             <div
-              class="sc-gsDJrp iOGeOr"
+              class="sc-kfPtPH dYvmmi"
             >
               <i
-                class="sc-dkPtyc dBwcwA"
+                class="sc-fKVsgm pSvAj"
               >
                 <svg>
                   guests.svg
                 </svg>
               </i>
               <input
-                class="sc-eCImvq izJtxO"
+                class="sc-iwjezw jNduHP"
                 max="9"
                 min="1"
                 type="number"
+                value="1"
               />
             </div>
           </div>
         </fieldset>
         <button
-          class="sc-iCfLBT fgyNbE"
+          class="sc-bdvvaa tPxtg"
           data-testid="button"
         >
           Search
@@ -101,7 +103,7 @@ exports[`<App /> should render properly 1`] = `
       </form>
     </div>
     <svg
-      class="sc-bBHwJV korfVF"
+      class="sc-bkkfTU cCuNEv"
     >
       partners.svg
     </svg>
