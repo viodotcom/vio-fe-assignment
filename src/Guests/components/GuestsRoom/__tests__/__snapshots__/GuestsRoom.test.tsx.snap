@@ -14,12 +14,6 @@ exports[`<GuestsRoom /> should render properly 1`] = `
       Room 
       1
     </h4>
-    <button
-      class="sc-bdvvaa dUCPep"
-      data-testid="button"
-    >
-      Remove room
-    </button>
   </div>
   <div
     class="sc-eCImvq guCNbL"
@@ -33,8 +27,9 @@ exports[`<GuestsRoom /> should render properly 1`] = `
       class="sc-gKckTs jduWvm"
     >
       <button
-        class="sc-bdvvaa eWedmN"
+        class="sc-bdvvaa fzcnyp"
         data-testid="remove-adult-0-button"
+        disabled=""
       >
         <svg>
           minus.svg
@@ -44,10 +39,10 @@ exports[`<GuestsRoom /> should render properly 1`] = `
         class="sc-jRQAMF bgpgfc"
         data-testid="adults-counter"
       >
-        0
+        1
       </span>
       <button
-        class="sc-bdvvaa eWedmN"
+        class="sc-bdvvaa fzcnyp"
         data-testid="add-adult-0-button"
       >
         <svg>
@@ -68,8 +63,9 @@ exports[`<GuestsRoom /> should render properly 1`] = `
       class="sc-gKckTs jduWvm"
     >
       <button
-        class="sc-bdvvaa eWedmN"
+        class="sc-bdvvaa fzcnyp"
         data-testid="remove-child-0-button"
+        disabled=""
       >
         <svg>
           minus.svg
@@ -82,7 +78,7 @@ exports[`<GuestsRoom /> should render properly 1`] = `
         0
       </span>
       <button
-        class="sc-bdvvaa eWedmN"
+        class="sc-bdvvaa fzcnyp"
         data-testid="add-child-0-button"
       >
         <svg>

@@ -8,6 +8,7 @@ interface ButtonProps {
   outline?: boolean;
   block?: boolean;
   dataTestId?: string;
+  disabled?: boolean;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({
@@ -17,6 +18,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   outline = false,
   block = true,
   dataTestId = "button",
+  disabled = false,
 }): ReactElement => {
   return (
     <StyledButton
@@ -25,6 +27,7 @@ const Button: FunctionComponent<ButtonProps> = ({
       outline={outline}
       block={block}
       data-testid={dataTestId}
+      disabled={disabled}
     >
       {children}
     </StyledButton>

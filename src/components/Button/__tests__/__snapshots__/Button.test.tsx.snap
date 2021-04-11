@@ -1,8 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Button /> could be disable 1`] = `
+<button
+  class="sc-bdvvaa tPxtg"
+  data-testid="button"
+  disabled=""
+>
+  Button Content
+</button>
+`;
+
 exports[`<Button /> should render properly 1`] = `
 <button
-  class="sc-bdvvaa ktiVbg"
+  class="sc-bdvvaa tPxtg"
   data-testid="button"
 >
   Button content

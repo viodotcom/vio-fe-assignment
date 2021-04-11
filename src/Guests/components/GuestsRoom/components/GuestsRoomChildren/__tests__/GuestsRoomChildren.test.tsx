@@ -54,4 +54,36 @@ describe("<GuestsRoomChildren />", () => {
 
     expect(child.age).toBe(childAge);
   });
+
+  it("should disable remove button if the room has no children", () => {
+    render(
+      <Provider store={store}>
+        <GuestsRoomChildren position={0} />
+      </Provider>
+    );
+
+    expect(screen.getByTestId("remove-child-0-button")).toHaveAttribute(
+      "disabled"
+    );
+  });
+
+  it("should disable add button in room max of children", () => {
+    const { maxNumberOfChildren } = store.getState().rooms[0];
+
+    render(
+      <Provider store={store}>
+        <GuestsRoomChildren position={0} />
+      </Provider>
+    );
+
+    const addButton = screen.getByTestId("add-child-0-button");
+
+    expect(addButton).not.toHaveAttribute("disabled");
+
+    for (let i = 1; i <= maxNumberOfChildren + 1; i++) {
+      fireEvent.click(addButton);
+    }
+
+    expect(addButton).toHaveAttribute("disabled");
+  });
 });

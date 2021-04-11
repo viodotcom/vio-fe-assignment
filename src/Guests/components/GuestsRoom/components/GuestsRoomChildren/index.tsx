@@ -30,9 +30,15 @@ const GuestsRoomChildren = ({
   position,
 }: GuestsRoomChildrenProps): ReactElement => {
   const dispatch = useDispatch();
-  const { children }: RoomType = useSelector(
-    (state: StoreStateType) => state.rooms[position]
-  );
+  const {
+    children,
+    maxNumberOfChildren,
+    maxOccupancy,
+    totalGuests,
+  }: RoomType = useSelector((state: StoreStateType) => state.rooms[position]);
+  const isRemoveButtonDisabled = children.length === 0;
+  const isAddButtonDisabled =
+    children.length === maxNumberOfChildren || totalGuests === maxOccupancy;
 
   return (
     <>
@@ -43,6 +49,7 @@ const GuestsRoomChildren = ({
             onClick={() => dispatch(removeChild(position))}
             theme="secondary"
             dataTestId={`remove-child-${position}-button`}
+            disabled={isRemoveButtonDisabled}
           >
             <IconMinus />
           </Button>
@@ -53,6 +60,7 @@ const GuestsRoomChildren = ({
             onClick={() => dispatch(addChild(position))}
             theme="secondary"
             dataTestId={`add-child-${position}-button`}
+            disabled={isAddButtonDisabled}
           >
             <IconPlus />
           </Button>
@@ -71,7 +79,7 @@ const GuestsRoomChildren = ({
                     changeChildAge({
                       childrenPosition: index,
                       roomPosition: position,
-                      age: Number(event.target.value),
+                      age: event.target.value,
                     })
                   )
                 }

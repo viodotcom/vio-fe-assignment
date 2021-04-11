@@ -93,7 +93,7 @@ exports[`<App /> should render properly 1`] = `
           </div>
         </fieldset>
         <button
-          class="sc-iCfLBT bhIUEc"
+          class="sc-iCfLBT fgyNbE"
           data-testid="button"
         >
           Search

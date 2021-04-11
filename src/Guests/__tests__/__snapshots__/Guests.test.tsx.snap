@@ -35,12 +35,6 @@ exports[`<Guests /> should render properly 1`] = `
           Room 
           1
         </h4>
-        <button
-          class="sc-bdvvaa dUCPep"
-          data-testid="button"
-        >
-          Remove room
-        </button>
       </div>
       <div
         class="sc-eCImvq guCNbL"
@@ -54,8 +48,9 @@ exports[`<Guests /> should render properly 1`] = `
           class="sc-gKckTs jduWvm"
         >
           <button
-            class="sc-bdvvaa eWedmN"
+            class="sc-bdvvaa fzcnyp"
             data-testid="remove-adult-0-button"
+            disabled=""
           >
             <svg>
               minus.svg
@@ -65,10 +60,10 @@ exports[`<Guests /> should render properly 1`] = `
             class="sc-jRQAMF bgpgfc"
             data-testid="adults-counter"
           >
-            0
+            1
           </span>
           <button
-            class="sc-bdvvaa eWedmN"
+            class="sc-bdvvaa fzcnyp"
             data-testid="add-adult-0-button"
           >
             <svg>
@@ -89,8 +84,9 @@ exports[`<Guests /> should render properly 1`] = `
           class="sc-gKckTs jduWvm"
         >
           <button
-            class="sc-bdvvaa eWedmN"
+            class="sc-bdvvaa fzcnyp"
             data-testid="remove-child-0-button"
+            disabled=""
           >
             <svg>
               minus.svg
@@ -103,7 +99,7 @@ exports[`<Guests /> should render properly 1`] = `
             0
           </span>
           <button
-            class="sc-bdvvaa eWedmN"
+            class="sc-bdvvaa fzcnyp"
             data-testid="add-child-0-button"
           >
             <svg>
@@ -117,7 +113,7 @@ exports[`<Guests /> should render properly 1`] = `
       />
     </div>
     <button
-      class="sc-bdvvaa eWedmN"
+      class="sc-bdvvaa fzcnyp"
       data-testid="button"
     >
       + Add Room
@@ -127,13 +123,13 @@ exports[`<Guests /> should render properly 1`] = `
     class="sc-ksdxAp guitwb"
   >
     <button
-      class="sc-bdvvaa ktiVbg"
+      class="sc-bdvvaa tPxtg"
       data-testid="search-button"
     >
       <svg>
         search.svg
       </svg>
-      Search 1 room • 0 guests
+      Search 1 room • 1 guest
     </button>
   </footer>
 </div>

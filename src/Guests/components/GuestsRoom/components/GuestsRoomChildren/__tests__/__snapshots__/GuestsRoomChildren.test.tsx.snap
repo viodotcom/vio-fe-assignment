@@ -13,8 +13,9 @@ exports[`<GuestsRoomChildren /> should render properly 1`] = `
     class="sc-furvIG cWguzl"
   >
     <button
-      class="sc-bdvvaa eWedmN"
+      class="sc-bdvvaa fzcnyp"
       data-testid="remove-child-0-button"
+      disabled=""
     >
       <svg>
         minus.svg
@@ -27,7 +28,7 @@ exports[`<GuestsRoomChildren /> should render properly 1`] = `
       0
     </span>
     <button
-      class="sc-bdvvaa eWedmN"
+      class="sc-bdvvaa fzcnyp"
       data-testid="add-child-0-button"
     >
       <svg>

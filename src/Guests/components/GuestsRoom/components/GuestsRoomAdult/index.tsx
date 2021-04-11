@@ -14,9 +14,15 @@ type GuestsRoomAdultsProps = {
 
 const GuestsRoomAdult = ({ position }: GuestsRoomAdultsProps): ReactElement => {
   const dispatch = useDispatch();
-  const room: RoomType = useSelector(
-    (state: StoreStateType) => state.rooms[position]
-  );
+  const {
+    adultsCounter,
+    maxNumberOfAdults,
+    totalGuests,
+    maxOccupancy,
+  }: RoomType = useSelector((state: StoreStateType) => state.rooms[position]);
+  const isRemoveButtonDisabled = adultsCounter === 1;
+  const isAddButtonDisabled =
+    adultsCounter === maxNumberOfAdults || maxOccupancy === totalGuests;
 
   return (
     <Guest>
@@ -26,14 +32,16 @@ const GuestsRoomAdult = ({ position }: GuestsRoomAdultsProps): ReactElement => {
           onClick={() => dispatch(removeAdult(position))}
           theme="secondary"
           dataTestId={`remove-adult-${position}-button`}
+          disabled={isRemoveButtonDisabled}
         >
           <IconMinus />
         </Button>
-        <GuestText data-testid="adults-counter">{room.adultsCounter}</GuestText>
+        <GuestText data-testid="adults-counter">{adultsCounter}</GuestText>
         <Button
           onClick={() => dispatch(addAdult(position))}
           theme="secondary"
           dataTestId={`add-adult-${position}-button`}
+          disabled={isAddButtonDisabled}
         >
           <IconPlus />
         </Button>

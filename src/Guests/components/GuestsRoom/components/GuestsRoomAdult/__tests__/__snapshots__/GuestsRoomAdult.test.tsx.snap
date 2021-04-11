@@ -13,8 +13,9 @@ exports[`<GuestsRoomAdult /> should render properly 1`] = `
     class="sc-gKckTs jduWvm"
   >
     <button
-      class="sc-bdvvaa eWedmN"
+      class="sc-bdvvaa fzcnyp"
       data-testid="remove-adult-0-button"
+      disabled=""
     >
       <svg>
         minus.svg
@@ -24,10 +25,10 @@ exports[`<GuestsRoomAdult /> should render properly 1`] = `
       class="sc-jRQAMF bgpgfc"
       data-testid="adults-counter"
     >
-      0
+      1
     </span>
     <button
-      class="sc-bdvvaa eWedmN"
+      class="sc-bdvvaa fzcnyp"
       data-testid="add-adult-0-button"
     >
       <svg>

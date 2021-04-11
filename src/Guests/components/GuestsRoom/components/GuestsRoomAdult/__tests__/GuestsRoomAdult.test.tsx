@@ -27,12 +27,44 @@ describe("<GuestsRoomAdult />", () => {
 
     const adultsCounter = screen.getByTestId("adults-counter");
 
-    expect(adultsCounter.textContent).toBe("0");
-
-    fireEvent.click(screen.getByTestId("add-adult-0-button"));
     expect(adultsCounter.textContent).toBe("1");
 
+    fireEvent.click(screen.getByTestId("add-adult-0-button"));
+    expect(adultsCounter.textContent).toBe("2");
+
     fireEvent.click(screen.getByTestId("remove-adult-0-button"));
-    expect(adultsCounter.textContent).toBe("0");
+    expect(adultsCounter.textContent).toBe("1");
+  });
+
+  it("should disable remove button if the room have just one guest", () => {
+    render(
+      <Provider store={store}>
+        <GuestsRoomAdult position={0} />
+      </Provider>
+    );
+
+    expect(screen.getByTestId("remove-adult-0-button")).toHaveAttribute(
+      "disabled"
+    );
+  });
+
+  it("should disable add button in the room max of guests", () => {
+    const room = store.getState().rooms[0];
+
+    render(
+      <Provider store={store}>
+        <GuestsRoomAdult position={0} />
+      </Provider>
+    );
+
+    const addButton = screen.getByTestId("add-adult-0-button");
+
+    expect(addButton).not.toHaveAttribute("disabled");
+
+    for (let i = 1; i <= room.maxNumberOfAdults + 1; i++) {
+      fireEvent.click(addButton);
+    }
+
+    expect(addButton).toHaveAttribute("disabled");
   });
 });

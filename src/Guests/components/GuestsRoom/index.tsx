@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Button from "components/Button";
-import { removeRoom } from "store";
+import { StoreStateType, removeRoom } from "store";
 
 import GuestsRoomAdult from "./components/GuestsRoomAdult";
 import GuestsRoomChildren from "./components/GuestsRoomChildren";
@@ -14,19 +14,24 @@ type GuestsRoomProps = {
 
 const GuestsRoom = ({ position }: GuestsRoomProps): ReactElement => {
   const dispatch = useDispatch();
+  const rooms = useSelector((state: StoreStateType) => state.rooms);
+  const isRoomRemovable = rooms.length > 1;
 
   return (
     <Container data-testid="guests-room">
       <TitleContainer>
         <Title>Room {position + 1}</Title>
-        <Button
-          onClick={() => dispatch(removeRoom(position))}
-          theme="danger"
-          outline
-          block={false}
-        >
-          Remove room
-        </Button>
+        {isRoomRemovable && (
+          <Button
+            onClick={() => dispatch(removeRoom(position))}
+            theme="danger"
+            outline
+            block={false}
+            dataTestId={`remove-room-${position}-button`}
+          >
+            Remove room
+          </Button>
+        )}
       </TitleContainer>
       <GuestsRoomAdult position={position} />
       <GuestsRoomChildren position={position} />

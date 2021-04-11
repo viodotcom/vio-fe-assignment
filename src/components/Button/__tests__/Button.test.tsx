@@ -21,4 +21,16 @@ describe("<Button />", () => {
 
     expect(mockedOnClick).toHaveBeenCalled();
   });
+
+  it("could be disable", () => {
+    const buttonText = "Button Content";
+
+    const { container } = render(
+      <Button onClick={() => {}} disabled>
+        {buttonText}
+      </Button>
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });

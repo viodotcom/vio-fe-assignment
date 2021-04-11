@@ -64,4 +64,8 @@ export const StyledButton = styled.button`
   svg {
     margin: 0 4px;
   }
+
+  &:disabled {
+    opacity: 0.4;
+  }
 `;

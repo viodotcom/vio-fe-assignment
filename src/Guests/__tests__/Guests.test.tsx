@@ -61,27 +61,53 @@ describe("<Guests />", () => {
     expect(screen.getAllByTestId("guests-room")).toHaveLength(1);
   });
 
-  it("should have a search button text with total of rooms and guests", () => {
-    render(
-      <Provider store={store}>
-        <Guests onClose={() => {}} />
-      </Provider>
-    );
+  describe("Search Button", () => {
+    it("should have a text with total of rooms and guests", () => {
+      render(
+        <Provider store={store}>
+          <Guests onClose={() => {}} />
+        </Provider>
+      );
 
-    const searchButton = screen.getByTestId("search-button");
+      const searchButton = screen.getByTestId("search-button");
 
-    expect(searchButton.textContent).toBe("search.svgSearch 1 room • 0 guests");
+      expect(searchButton.textContent).toBe(
+        "search.svgSearch 1 room • 1 guest"
+      );
 
-    fireEvent.click(screen.getByTestId("add-adult-0-button"));
+      fireEvent.click(screen.getByTestId("add-adult-0-button"));
 
-    expect(searchButton.textContent).toBe("search.svgSearch 1 room • 1 guest");
+      expect(searchButton.textContent).toBe(
+        "search.svgSearch 1 room • 2 guests"
+      );
 
-    fireEvent.click(screen.getByText("+ Add Room"));
-    fireEvent.click(screen.getByTestId("add-adult-1-button"));
-    fireEvent.click(screen.getByTestId("add-child-0-button"));
+      fireEvent.click(screen.getByText("+ Add Room"));
+      fireEvent.click(screen.getByTestId("add-adult-1-button"));
+      fireEvent.click(screen.getByTestId("add-child-0-button"));
 
-    expect(searchButton.textContent).toBe(
-      "search.svgSearch 2 rooms • 3 guests"
-    );
+      expect(searchButton.textContent).toBe(
+        "search.svgSearch 2 rooms • 5 guests"
+      );
+    });
+
+    it("should be disabled if the room has a child without age defined", () => {
+      render(
+        <Provider store={store}>
+          <Guests onClose={() => {}} />
+        </Provider>
+      );
+
+      const searchButton = screen.getByTestId("search-button");
+
+      expect(searchButton).not.toHaveAttribute("disabled");
+
+      fireEvent.click(screen.getByTestId("add-child-0-button"));
+      expect(searchButton).toHaveAttribute("disabled");
+
+      fireEvent.change(screen.getByTestId("child-0-0-select"), {
+        target: { value: 0 },
+      });
+      expect(searchButton).not.toHaveAttribute("disabled");
+    });
   });
 });
