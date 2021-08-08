@@ -1,35 +1,41 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { decrement, increment } from './roomsSlice';
 
-const Hello = () => {
+import { addRoom, removeRoomById } from './roomsSlice';
+import { serializeRoomsData } from '../../libs/url';
+
+import { Room } from './Room';
+
+const Rooms = () => {
   const rooms = useSelector((state) => state.rooms);
   const dispatch = useDispatch();
+  const handleRemoveRoom = React.useCallback((id) => {
+    dispatch(removeRoomById(id));
+  }, [dispatch]);
 
   return (
     <div>
-      <p>Hello!</p>
-      <button type="button" onClick={() => dispatch(increment())}>Increment</button>
-      <button type="button" onClick={() => dispatch(decrement())}>Decrement</button>
+      <h1>Rooms</h1>
       {rooms.map((r, i) => (
-        <div key={i.toString()}>
-          <h1>
-            Room
-            {i + 1}
-          </h1>
-          <div key={i.toString()}>
-            Adults:
-            {r.adults}
-          </div>
-          <div>
-            Children
-            {' '}
-            {r.childrenAges.length}
-          </div>
-        </div>
+        <Room
+          key={i.toString()}
+          id={i}
+          adults={r.adults}
+          childrenAges={r.childrenAges ? r.childrenAges.length : 0}
+          onRemove={handleRemoveRoom}
+        />
       ))}
+      <button type="button" onClick={() => dispatch(addRoom())}>Add room</button>
+      <button type="button" onClick={() => serializeRoomsData(rooms)}>
+        Search
+        {' '}
+        {rooms.length}
+        {' '}
+        rooms
+        {' '}
+      </button>
     </div>
   );
 };
 
-export default Hello;
+export default Rooms;
