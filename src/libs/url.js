@@ -11,11 +11,11 @@ export const deserializeRoomsData = () => {
   roomsFromDataStr.forEach((room) => {
     rooms.push({
       adults: Number(R.head(room)),
-      childrenAges: room.indexOf(':') > 0 ? R.map(Number, room.split(':')[1].split(',')) : null,
+      childrenAges: room.indexOf(':') > 0 ? R.map(Number, room.split(':')[1].split(',')) : [],
     });
   });
 
-  return rooms;
+  return R.reject(R.isNil, rooms);
 };
 
 export const serializeRoomsData = (rooms) => {

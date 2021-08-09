@@ -1,28 +1,25 @@
+import * as R from 'ramda';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { addRoom, removeRoomById } from './roomsSlice';
 import { serializeRoomsData } from '../../libs/url';
+
+import { addRoom } from '../../store';
 
 import { Room } from './Room';
 
 const Rooms = () => {
   const rooms = useSelector((state) => state.rooms);
   const dispatch = useDispatch();
-  const handleRemoveRoom = React.useCallback((id) => {
-    dispatch(removeRoomById(id));
-  }, [dispatch]);
 
   return (
     <div>
       <h1>Rooms</h1>
       {rooms.map((r, i) => (
         <Room
-          key={i.toString()}
+          key={r.id}
           id={i}
           adults={r.adults}
-          childrenAges={r.childrenAges ? r.childrenAges.length : 0}
-          onRemove={handleRemoveRoom}
+          childrenAges={R.prop('childrenAges', r)}
         />
       ))}
       <button type="button" onClick={() => dispatch(addRoom())}>Add room</button>
