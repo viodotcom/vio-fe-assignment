@@ -1,17 +1,16 @@
 import React from 'react';
 
 export function Child({
-  // eslint-disable-next-line react/prop-types
-  id, age, onRemove, onIncAge, onDecAge,
+  age,
+  onRemove,
+  onIncAge,
+  onDecAge,
 }) {
   return (
     <>
       <h4>child</h4>
       <span>
         Child
-        {id + 1}
-        {' '}
-        age
       </span>
       <span>
         Age

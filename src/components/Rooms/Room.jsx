@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Child } from './Child';
 import './Room.css';
@@ -13,50 +13,42 @@ import {
   removeChildById,
   incChildAgeById,
   decChildAgeById,
+  isAdultsIncDisabled,
+  isAdultsDecDisabled,
+  isChildrenIncDisabled,
+  isRoomRemovingDisabled,
 } from '../../store';
 
 export function Room({
-  // eslint-disable-next-line react/prop-types
   id, adults, childrenAges,
 }) {
   const dispatch = useDispatch();
   const childrenCount = childrenAges ? R.length(childrenAges) : 0;
-  const handleRemoveRoom = React.useCallback(() => {
-    dispatch(removeRoomById(id));
-  }, [dispatch, id]);
-  const handleAddAdultByRoomId = React.useCallback(() => {
-    dispatch(incAdultByRoomId(id));
-  }, [dispatch, id]);
-  const handleRemoveAdultByRoomId = React.useCallback(() => {
-    dispatch(decAdultByRoomId(id));
-  }, [dispatch, id]);
-  const handleAddChildByRoomId = React.useCallback(() => {
-    dispatch(incChildByRoomId(id));
-  }, [dispatch, id]);
-  const handleRemoveChildByRoomId = React.useCallback(() => {
-    dispatch(decChildByRoomId(id));
-  }, [dispatch, id]);
-  const handleRemoveChildById = React.useCallback((childId) => {
-    dispatch(removeChildById(id, childId));
-  }, [dispatch, id]);
-  const handleIncChildAgeById = React.useCallback((childId) => {
-    dispatch(incChildAgeById(id, childId));
-  }, [dispatch, id]);
-  const handleDecChildAgeById = React.useCallback((childId) => {
-    dispatch(decChildAgeById(id, childId));
-  }, [dispatch, id]);
-  console.log('Render room', id);
+  const handleRemoveRoom = () => dispatch(removeRoomById(id));
+  const handleAddAdultByRoomId = () => dispatch(incAdultByRoomId(id));
+  const handleRemoveAdultByRoomId = () => dispatch(decAdultByRoomId(id));
+  const handleAddChildByRoomId = () => dispatch(incChildByRoomId(id));
+  const handleRemoveChildByRoomId = () => dispatch(decChildByRoomId(id));
+  const handleRemoveChildById = (childId) => dispatch(removeChildById(id, childId));
+  const handleIncChildAgeById = (childId) => dispatch(incChildAgeById(id, childId));
+  const handleDecChildAgeById = (childId) => dispatch(decChildAgeById(id, childId));
+
+  const isAdultsIncreaseDisabled = useSelector((state) => isAdultsIncDisabled(state, id));
+  const isAdultsDecreaseDisabled = useSelector((state) => isAdultsDecDisabled(state, id));
+  const isChildrenIncreaseDisabled = useSelector((state) => isChildrenIncDisabled(state, id));
+  const isRoomRemoveDisabled = useSelector(() => isRoomRemovingDisabled(id));
+
   return (
     <div className="Room">
-      <button type="button" onClick={handleRemoveRoom}>Remove room</button>
+      <button type="button" disabled={isRoomRemoveDisabled} onClick={handleRemoveRoom}>Remove room</button>
 
       <p>
-        <button type="button" onClick={handleAddAdultByRoomId}>Add adult</button>
-        <button type="button" onClick={handleRemoveAdultByRoomId}>Remove adult</button>
+        <button type="button" disabled={isAdultsIncreaseDisabled} onClick={handleAddAdultByRoomId}>Add adult</button>
+        <button type="button" disabled={isAdultsDecreaseDisabled} onClick={handleRemoveAdultByRoomId}>Remove adult</button>
       </p>
 
       <p>
-        <button type="button" onClick={handleAddChildByRoomId}>Add child</button>
+        <button type="button" disabled={isChildrenIncreaseDisabled} onClick={handleAddChildByRoomId}>Add child</button>
         <button type="button" onClick={handleRemoveChildByRoomId}>Remove child</button>
       </p>
       <h3>
@@ -70,14 +62,11 @@ export function Room({
       <div>
         Children
         {' '}
-        {/* eslint-disable-next-line react/prop-types */}
         {childrenCount}
       </div>
-      {/* eslint-disable-next-line react/prop-types */}
       {childrenCount ? childrenAges.map((age, i) => (
         <Child
           key={i.toString()}
-          id={i}
           age={age}
           onRemove={() => handleRemoveChildById(i)}
           onIncAge={() => handleIncChildAgeById(i)}

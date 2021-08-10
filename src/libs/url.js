@@ -1,10 +1,10 @@
 import * as R from 'ramda';
 
-const ROOMS_DATA = 'roomsData';
+import { ROOMS_DATA_GET_PARAM_NAME } from '../constants';
 
 export const deserializeRoomsData = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
-  const roomsDataStr = urlSearchParams.get(ROOMS_DATA);
+  const roomsDataStr = urlSearchParams.get(ROOMS_DATA_GET_PARAM_NAME);
   const roomsFromDataStr = roomsDataStr ? roomsDataStr.split('|') : [];
   const rooms = [];
 
@@ -15,16 +15,19 @@ export const deserializeRoomsData = () => {
     });
   });
 
-  return R.reject(R.isNil, rooms);
+  return rooms;
 };
 
 export const serializeRoomsData = (rooms) => {
   const urlSearchParams = new URLSearchParams(window.location.search);
   let resultString = '';
 
-  rooms.forEach((r) => {
-    resultString += `${r.adults}:${r.childrenAges.join(',')}|`;
+  rooms.forEach((r, i) => {
+    const childrenAges = R.reject(R.equals(null))(r.childrenAges);
+    if (i > 0) resultString += '|';
+    resultString += `${r.adults}`;
+    if (childrenAges.length) resultString += `:${childrenAges.join(',')}`;
   });
-  urlSearchParams.set(ROOMS_DATA, resultString);
+  urlSearchParams.set(ROOMS_DATA_GET_PARAM_NAME, resultString);
   window.history.replaceState({}, '', `${window.location.pathname}?${urlSearchParams.toString()}`);
 };

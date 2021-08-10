@@ -3,27 +3,32 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { serializeRoomsData } from '../../libs/url';
 
-import { addRoom } from '../../store';
-
+import { MAX_ROOMS_COUNT } from '../../constants';
+import { addRoom, resetToInitial } from '../../store';
 import { Room } from './Room';
 
 const Rooms = () => {
   const rooms = useSelector((state) => state.rooms);
   const dispatch = useDispatch();
+  const handleAddRoom = () => dispatch(addRoom());
+  const handleResetToInitial = () => dispatch(resetToInitial());
 
   return (
     <div>
+      <p>
+        <button type="button" onClick={handleResetToInitial}>Reset to initial</button>
+      </p>
       <h1>Rooms</h1>
       {rooms.map((r, i) => (
         <Room
-          key={r.id}
+          key={i.toString()}
           id={i}
-          adults={r.adults}
+          adults={R.prop('adults', r)}
           childrenAges={R.prop('childrenAges', r)}
         />
       ))}
-      <button type="button" onClick={() => dispatch(addRoom())}>Add room</button>
-      <button type="button" onClick={() => serializeRoomsData(rooms)}>
+      <button type="button" disabled={R.length(rooms) === MAX_ROOMS_COUNT} onClick={handleAddRoom}>Add room</button>
+      <button type="button" disabled={!R.length(rooms)} onClick={() => serializeRoomsData(rooms)}>
         Search
         {' '}
         {rooms.length}

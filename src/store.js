@@ -3,80 +3,117 @@ import { createStore, combineReducers } from 'redux';
 
 import { deserializeRoomsData } from './libs/url';
 import {
-  MAX_ROOMS_COUNT, MAX_ADULTS_FOR_ROOM_COUNT, MAX_CHILDREN_FOR_ROOM_COUNT, MAX_ROOM_OCCUPANCY_COUNT,
+  MAX_ROOMS_COUNT,
+  MAX_CHILDREN_FOR_ROOM_COUNT,
+  MAX_ROOM_OCCUPANCY_COUNT,
+  MIN_ADULTS_FOR_ROOM_COUNT,
 } from './constants';
 
 const initialRoomsState = [];
 
 const roomPattern = {
-  adults: 0,
+  adults: MIN_ADULTS_FOR_ROOM_COUNT,
   childrenAges: [],
+};
+
+// Selectors
+
+export const isRoomRemovingDisabled = (roomId) => Number(roomId) === 0;
+
+const isIncOccupancyDisabled = (rooms, roomId) => {
+  const currentOccupancy = R.length(R.prop('childrenAges', rooms[roomId]) || []) + R.prop('adults', rooms[roomId]);
+  return currentOccupancy >= MAX_ROOM_OCCUPANCY_COUNT;
+};
+
+export const isAdultsIncDisabled = (state, roomId) => {
+  const rooms = R.prop('rooms', state);
+  const room = rooms[roomId];
+  return isIncOccupancyDisabled(rooms, roomId) || R.prop('adults', room) >= MAX_ROOM_OCCUPANCY_COUNT;
+};
+
+export const isAdultsDecDisabled = (state, roomId) => {
+  const rooms = R.prop('rooms', state);
+  const room = rooms[roomId];
+  return R.prop('adults', room) <= MIN_ADULTS_FOR_ROOM_COUNT;
+};
+
+export const isChildrenIncDisabled = (state, roomId) => {
+  const rooms = R.prop('rooms', state);
+  const room = rooms[roomId];
+  return isIncOccupancyDisabled(rooms, roomId) || R.length(R.prop('childrenAges', room)) >= MAX_CHILDREN_FOR_ROOM_COUNT;
 };
 
 // reducer
 
 const roomsReducer = (state = initialRoomsState, action) => {
   const { type, payload } = action;
-  const isRoomOccupancyExhausted = (roomId) => {
-    const currentOccupancy = R.length(R.prop('childrenAges', state[roomId])) + R.prop('adults', state[roomId]);
-    return currentOccupancy < MAX_ROOM_OCCUPANCY_COUNT;
-  };
 
   switch (type) {
     case 'GET_ROOMS_FROM_URL': {
-      const mapIndexed = R.addIndex(R.map);
-      return mapIndexed((r, i) => R.assoc('id', `${i}`, r), deserializeRoomsData());
+      const roomsData = deserializeRoomsData();
+      const resultState = R.length(roomsData) ? roomsData : [R.clone(roomPattern)];
+      return resultState;
     }
+
     case 'ADD_ROOM':
-      return state.length + 1 <= MAX_ROOMS_COUNT ? R.append(roomPattern, state) : state;
+      return state.length + 1 <= MAX_ROOMS_COUNT ? R.append(R.clone(roomPattern), state) : state;
+
     case 'REMOVE_ROOM_BY_ID':
       return R.remove(payload, 1, state);
+
     case 'INC_ADULT_BY_ROOM_ID':
       if (
-        state[payload].adults + 1 <= MAX_ADULTS_FOR_ROOM_COUNT
-        && isRoomOccupancyExhausted(payload)
+        !isIncOccupancyDisabled(state, payload)
       ) {
         state[payload].adults += 1;
       }
       return R.update(payload, state[payload], state);
+
     case 'DEC_ADULT_BY_ROOM_ID':
-      if (state[payload].adults - 1 >= 0) {
+      if (state[payload].adults - 1 >= MIN_ADULTS_FOR_ROOM_COUNT) {
         state[payload].adults -= 1;
       }
       return R.update(payload, state[payload], state);
+
     case 'INC_CHILD_BY_ROOM_ID':
       if (
         R.length(R.prop('childrenAges', state[payload])) < MAX_CHILDREN_FOR_ROOM_COUNT
-        && isRoomOccupancyExhausted(payload)
+        && !isIncOccupancyDisabled(state, payload)
       ) {
         state[payload].childrenAges.push(null);
       }
       return R.update(payload, state[payload], state);
+
     case 'DEC_CHILD_BY_ROOM_ID':
       if (R.length(R.prop('childrenAges', state[payload])) > 0) {
         state[payload].childrenAges.pop();
       }
       return R.update(payload, state[payload], state);
+
     case 'REMOVE_CHILD_BY_ID': {
       const { roomId, childId } = payload;
-
       state[roomId].childrenAges = R.remove(childId, 1, R.prop('childrenAges', state[roomId]));
       return R.update(roomId, state[roomId], state);
     }
+
     case 'INC_CHILD_AGE_BY_ID': {
       const { roomId, childId } = payload;
-
       state[roomId].childrenAges[childId] += 1;
       return R.update(roomId, state[roomId], state);
     }
+
     case 'DEC_CHILD_AGE_BY_ID': {
       const { roomId, childId } = payload;
-
       if (state[roomId].childrenAges[childId] > 0) {
         state[roomId].childrenAges[childId] -= 1;
       }
       return R.update(roomId, state[roomId], state);
     }
+
+    case 'RESET_TO_INITIAL': {
+      return state;
+    }
+
     default:
       return state;
   }
@@ -132,8 +169,14 @@ export const decChildAgeById = (roomId, childId) => ({
   payload: { roomId, childId },
 });
 
+export const resetToInitial = () => ({
+  type: 'RESET_TO_INITIAL',
+});
+
 export default createStore(
-  combineReducers({ rooms: roomsReducer }),
+  combineReducers({
+    rooms: roomsReducer,
+  }),
   // eslint-disable-next-line no-underscore-dangle
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
