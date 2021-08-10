@@ -10,7 +10,7 @@ export const deserializeRoomsData = () => {
 
   roomsFromDataStr.forEach((room) => {
     rooms.push({
-      adults: Number(R.head(room)),
+      adults: room[0] ? Number(room[0]) : 0,
       childrenAges: room.indexOf(':') > 0 ? R.map(Number, room.split(':')[1].split(',')) : [],
     });
   });

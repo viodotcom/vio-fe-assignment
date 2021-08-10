@@ -16,9 +16,28 @@ const roomPattern = {
   childrenAges: [],
 };
 
-// Selectors
+const validateRoomsData = (rooms) => {
+  const validateRoom = (room) => {
+    const childrenCount = R.length(R.prop('childrenAges', room) || []);
+    const adultsCount = R.prop('adults', room);
+    const occupancy = childrenCount + adultsCount;
 
-export const isRoomRemovingDisabled = (roomId) => Number(roomId) === 0;
+    if (
+      occupancy <= MAX_ROOM_OCCUPANCY_COUNT
+      || childrenCount < 0 > MAX_CHILDREN_FOR_ROOM_COUNT
+      || adultsCount < MIN_ADULTS_FOR_ROOM_COUNT
+    ) {
+      return true;
+    }
+
+    console.log('Room data is not valide', room);
+    return false;
+  };
+
+  return R.filter(validateRoom, rooms);
+};
+
+// Selectors
 
 const isIncOccupancyDisabled = (rooms, roomId) => {
   const currentOccupancy = R.length(R.prop('childrenAges', rooms[roomId]) || []) + R.prop('adults', rooms[roomId]);
@@ -43,7 +62,9 @@ export const isChildrenIncDisabled = (state, roomId) => {
   return isIncOccupancyDisabled(rooms, roomId) || R.length(R.prop('childrenAges', room)) >= MAX_CHILDREN_FOR_ROOM_COUNT;
 };
 
-// reducer
+export const isRoomRemovingDisabled = (roomId) => Number(roomId) === 0;
+
+// Reducer
 
 const roomsReducer = (state = initialRoomsState, action) => {
   const { type, payload } = action;
@@ -51,8 +72,8 @@ const roomsReducer = (state = initialRoomsState, action) => {
   switch (type) {
     case 'GET_ROOMS_FROM_URL': {
       const roomsData = deserializeRoomsData();
-      const resultState = R.length(roomsData) ? roomsData : [R.clone(roomPattern)];
-      return resultState;
+      const validatedRoomsData = validateRoomsData(roomsData);
+      return R.length(validatedRoomsData) ? validatedRoomsData : [R.clone(roomPattern)];
     }
 
     case 'ADD_ROOM':
@@ -62,9 +83,7 @@ const roomsReducer = (state = initialRoomsState, action) => {
       return R.remove(payload, 1, state);
 
     case 'INC_ADULT_BY_ROOM_ID':
-      if (
-        !isIncOccupancyDisabled(state, payload)
-      ) {
+      if (!isIncOccupancyDisabled(state, payload)) {
         state[payload].adults += 1;
       }
       return R.update(payload, state[payload], state);
@@ -110,16 +129,12 @@ const roomsReducer = (state = initialRoomsState, action) => {
       return R.update(roomId, state[roomId], state);
     }
 
-    case 'RESET_TO_INITIAL': {
-      return state;
-    }
-
     default:
       return state;
   }
 };
 
-// actions
+// Action creators
 
 export const getRoomsFromUrl = () => ({
   type: 'GET_ROOMS_FROM_URL',
@@ -170,7 +185,7 @@ export const decChildAgeById = (roomId, childId) => ({
 });
 
 export const resetToInitial = () => ({
-  type: 'RESET_TO_INITIAL',
+  type: 'GET_ROOMS_FROM_URL',
 });
 
 export default createStore(
