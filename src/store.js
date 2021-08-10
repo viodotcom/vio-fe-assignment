@@ -24,8 +24,9 @@ const validateRoomsData = (rooms) => {
 
     if (
       occupancy <= MAX_ROOM_OCCUPANCY_COUNT
-      || childrenCount < 0 > MAX_CHILDREN_FOR_ROOM_COUNT
-      || adultsCount < MIN_ADULTS_FOR_ROOM_COUNT
+      && childrenCount <= MAX_CHILDREN_FOR_ROOM_COUNT
+      && childrenCount >= 0
+      && adultsCount >= MIN_ADULTS_FOR_ROOM_COUNT
     ) {
       return true;
     }
