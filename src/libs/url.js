@@ -2,20 +2,24 @@ import * as R from 'ramda';
 
 import { ROOMS_DATA_GET_PARAM_NAME } from '../constants';
 
-export const deserializeRoomsData = () => {
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const roomsDataStr = urlSearchParams.get(ROOMS_DATA_GET_PARAM_NAME);
-  const roomsFromDataStr = roomsDataStr ? roomsDataStr.split('|') : [];
+export const deserializeRoomsData = (str) => {
+  const data = str ? str.split('|') : [];
   const rooms = [];
 
-  roomsFromDataStr.forEach((room) => {
+  data.forEach((room) => {
     rooms.push({
-      adults: room[0] ? Number(room[0]) : 0,
+      adults: room[0] && Number(room[0]) ? Number(room[0]) : 0,
       childrenAges: room.indexOf(':') > 0 ? R.map(Number, room.split(':')[1].split(',')) : [],
     });
   });
 
   return rooms;
+};
+
+export const getRoomsDataFromQueryParams = () => {
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const roomsDataStr = urlSearchParams.get(ROOMS_DATA_GET_PARAM_NAME);
+  return deserializeRoomsData(roomsDataStr);
 };
 
 export const serializeRoomsData = (rooms) => {

@@ -1,13 +1,12 @@
 import * as R from 'ramda';
-import { createStore, combineReducers } from 'redux';
 
-import { deserializeRoomsData } from './libs/url';
 import {
-  MAX_ROOMS_COUNT,
   MAX_CHILDREN_FOR_ROOM_COUNT,
   MAX_ROOM_OCCUPANCY_COUNT,
+  MAX_ROOMS_COUNT,
   MIN_ADULTS_FOR_ROOM_COUNT,
-} from './constants';
+} from '../constants';
+import { getRoomsDataFromQueryParams } from '../libs/url';
 
 const initialRoomsState = [];
 
@@ -67,12 +66,12 @@ export const isRoomRemovingDisabled = (roomId) => Number(roomId) === 0;
 
 // Reducer
 
-const roomsReducer = (state = initialRoomsState, action) => {
+export const roomsReducer = (state = initialRoomsState, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case 'GET_ROOMS_FROM_URL': {
-      const roomsData = deserializeRoomsData();
+      const roomsData = getRoomsDataFromQueryParams();
       const validatedRoomsData = validateRoomsData(roomsData);
       return R.length(validatedRoomsData) ? validatedRoomsData : [R.clone(roomPattern)];
     }
@@ -134,65 +133,3 @@ const roomsReducer = (state = initialRoomsState, action) => {
       return state;
   }
 };
-
-// Action creators
-
-export const getRoomsFromUrl = () => ({
-  type: 'GET_ROOMS_FROM_URL',
-});
-
-export const addRoom = () => ({
-  type: 'ADD_ROOM',
-});
-
-export const removeRoomById = (roomId) => ({
-  type: 'REMOVE_ROOM_BY_ID',
-  payload: roomId,
-});
-
-export const incAdultByRoomId = (roomId) => ({
-  type: 'INC_ADULT_BY_ROOM_ID',
-  payload: roomId,
-});
-
-export const decAdultByRoomId = (roomId) => ({
-  type: 'DEC_ADULT_BY_ROOM_ID',
-  payload: roomId,
-});
-
-export const incChildByRoomId = (roomId) => ({
-  type: 'INC_CHILD_BY_ROOM_ID',
-  payload: roomId,
-});
-
-export const decChildByRoomId = (roomId) => ({
-  type: 'DEC_CHILD_BY_ROOM_ID',
-  payload: roomId,
-});
-
-export const removeChildById = (roomId, childId) => ({
-  type: 'REMOVE_CHILD_BY_ID',
-  payload: { roomId, childId },
-});
-
-export const incChildAgeById = (roomId, childId) => ({
-  type: 'INC_CHILD_AGE_BY_ID',
-  payload: { roomId, childId },
-});
-
-export const decChildAgeById = (roomId, childId) => ({
-  type: 'DEC_CHILD_AGE_BY_ID',
-  payload: { roomId, childId },
-});
-
-export const resetToInitial = () => ({
-  type: 'GET_ROOMS_FROM_URL',
-});
-
-export default createStore(
-  combineReducers({
-    rooms: roomsReducer,
-  }),
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);

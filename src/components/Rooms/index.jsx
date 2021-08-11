@@ -1,10 +1,10 @@
 import * as R from 'ramda';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { serializeRoomsData } from '../../libs/url';
 
+import { serializeRoomsData } from '../../libs/url';
 import { MAX_ROOMS_COUNT } from '../../constants';
-import { addRoom, resetToInitial } from '../../store';
+import { addRoom, resetToInitial } from '../../store/actions';
 import { Room } from './Room';
 
 const Rooms = () => {

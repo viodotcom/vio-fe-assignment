@@ -13,11 +13,13 @@ import {
   removeChildById,
   incChildAgeById,
   decChildAgeById,
+} from '../../store/actions';
+import {
   isAdultsIncDisabled,
   isAdultsDecDisabled,
   isChildrenIncDisabled,
   isRoomRemovingDisabled,
-} from '../../store';
+} from '../../store/reducers';
 
 export function Room({
   id, adults, childrenAges,
