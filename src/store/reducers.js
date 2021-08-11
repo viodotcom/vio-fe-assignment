@@ -62,6 +62,12 @@ export const isChildrenIncDisabled = (state, roomId) => {
   return isIncOccupancyDisabled(rooms, roomId) || R.length(R.prop('childrenAges', room)) >= MAX_CHILDREN_FOR_ROOM_COUNT;
 };
 
+export const isChildrenDecDisabled = (state, roomId) => {
+  const rooms = R.prop('rooms', state);
+  const room = rooms[roomId];
+  return !R.length(R.prop('childrenAges', room));
+};
+
 export const isRoomRemovingDisabled = (roomId) => Number(roomId) === 0;
 
 // Reducer
@@ -117,7 +123,7 @@ export const roomsReducer = (state = initialRoomsState, action) => {
 
     case 'CHANGE_CHILD_AGE_BY_ID': {
       const { roomId, childId, age } = payload;
-      state[roomId].childrenAges[childId] = Number(age);
+      state[roomId].childrenAges[childId] = age >= 0 ? Number(age) : null;
       return R.update(roomId, state[roomId], state);
     }
 

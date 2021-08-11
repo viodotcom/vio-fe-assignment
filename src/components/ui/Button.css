@@ -1,0 +1,45 @@
+.button {
+    background: #f7fbff;
+    border: 1px solid #bfdaf9;
+    color: #0071f3;
+    font-weight: 600;
+    padding: 0 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 40px;
+}
+
+.button:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+.button_contained {
+    background: #0071f3;
+    box-shadow: 0 0 1px rgba(68, 80, 95, 0.08), 0 1px 4px rgba(68, 80, 95, 0.32);
+    color: #fff;
+}
+
+.button_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button_icon {
+    display: flex;
+    align-items: center;
+}
+
+.button_icon_margin {
+    margin-right: 10px;
+}
+
+.button_fullwidth {
+    width: 100%;
+}
+
+.button_transparent {
+    background: transparent;
+    border: 0;
+}

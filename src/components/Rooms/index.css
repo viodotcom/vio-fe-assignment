@@ -1,0 +1,15 @@
+.rooms {}
+
+.rooms_wrapper {
+    height: calc(100% - 64px - 100px);
+    overflow: scroll;
+    position: absolute;
+    width: 100%;
+    top: 64px;
+    left: 0;
+    padding-bottom: 100px;
+}
+
+.rooms_content {
+    padding: 0 16px;
+}

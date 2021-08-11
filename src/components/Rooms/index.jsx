@@ -4,38 +4,58 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { serializeRoomsData } from '../../libs/url';
 import { MAX_ROOMS_COUNT } from '../../constants';
-import { addRoom, resetToInitial } from '../../store/actions';
+import { addRoom } from '../../store/actions';
+import './index.css';
 import { Room } from './Room';
+import Button from '../ui/Button';
+import { ReactComponent as PlusIcon } from '../../icons/plus.svg';
+import { ReactComponent as LensIcon } from '../../icons/lens.svg';
 
 const Rooms = () => {
   const rooms = useSelector((state) => state.rooms);
   const dispatch = useDispatch();
   const handleAddRoom = () => dispatch(addRoom());
-  const handleResetToInitial = () => dispatch(resetToInitial());
 
   return (
-    <div>
-      <p>
-        <button type="button" onClick={handleResetToInitial}>Reset to initial</button>
-      </p>
-      <h1>Rooms</h1>
-      {rooms.map((r, i) => (
-        <Room
-          key={i.toString()}
-          id={i}
-          adults={R.prop('adults', r)}
-          childrenAges={R.prop('childrenAges', r)}
-        />
-      ))}
-      <button type="button" disabled={R.length(rooms) === MAX_ROOMS_COUNT} onClick={handleAddRoom}>Add room</button>
-      <button type="button" disabled={!R.length(rooms)} onClick={() => serializeRoomsData(rooms)}>
-        Search
-        {' '}
-        {rooms.length}
-        {' '}
-        rooms
-        {' '}
-      </button>
+    <div className="rooms">
+      <div className="rooms_wrapper">
+        <div className="rooms_content">
+          {rooms.map((r, i) => (
+            <Room
+              key={i.toString()}
+              id={i}
+              adults={R.prop('adults', r)}
+              childrenAges={R.prop('childrenAges', r)}
+            />
+          ))}
+          <Button
+            fullwidth
+            disabled={R.length(rooms) === MAX_ROOMS_COUNT}
+            onClick={handleAddRoom}
+            icon={<PlusIcon />}
+          >
+            Add room
+          </Button>
+        </div>
+      </div>
+      <div className="stickyContainer">
+        <div className="stickyContainer_content">
+          <Button
+            contained
+            fullwidth
+            disabled={!R.length(rooms)}
+            onClick={() => serializeRoomsData(rooms)}
+            icon={<LensIcon />}
+          >
+            Search
+            {' '}
+            {rooms.length}
+            {' '}
+            rooms
+            {' '}
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

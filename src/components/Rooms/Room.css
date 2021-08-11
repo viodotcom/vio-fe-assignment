@@ -1,4 +1,42 @@
-.Room {
-    border: 1px solid red;
-    margin: 20px 0;
+.room {
+    margin: 0;
+    color: #2a333d;
+    padding: 24px 0;
+    position: relative;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.room:after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: #eff2f6;
+    position: absolute;
+    bottom: 0;
+}
+
+.room_removeBtn {
+    font-weight: 600;
+    color: #d83b3b;
+    outline: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+}
+
+.room_children {
+    position: relative;
+}
+
+.room_children:after {
+    content: ' ';
+    width: 1px;
+    height: 100%;
+    background: #eff2f6;
+    position: absolute;
+    top: 0;
+    left: 10px;
 }

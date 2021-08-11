@@ -17,8 +17,12 @@ import {
   isAdultsIncDisabled,
   isAdultsDecDisabled,
   isChildrenIncDisabled,
+  isChildrenDecDisabled,
   isRoomRemovingDisabled,
 } from '../../store/reducers';
+import Button from '../ui/Button';
+import { ReactComponent as PlusIcon } from '../../icons/plus.svg';
+import { ReactComponent as MinusIcon } from '../../icons/minus.svg';
 
 export function Room({
   id, adults, childrenAges,
@@ -36,42 +40,79 @@ export function Room({
   const isAdultsIncreaseDisabled = useSelector((state) => isAdultsIncDisabled(state, id));
   const isAdultsDecreaseDisabled = useSelector((state) => isAdultsDecDisabled(state, id));
   const isChildrenIncreaseDisabled = useSelector((state) => isChildrenIncDisabled(state, id));
+  const isChildrenDecreaseDisabled = useSelector((state) => isChildrenDecDisabled(state, id));
   const isRoomRemoveDisabled = useSelector(() => isRoomRemovingDisabled(id));
 
   return (
-    <div className="Room">
-      <button type="button" disabled={isRoomRemoveDisabled} onClick={handleRemoveRoom}>Remove room</button>
-
-      <p>
-        <button type="button" disabled={isAdultsIncreaseDisabled} onClick={handleAddAdultByRoomId}>Add adult</button>
-        <button type="button" disabled={isAdultsDecreaseDisabled} onClick={handleRemoveAdultByRoomId}>Remove adult</button>
-      </p>
-
-      <p>
-        <button type="button" disabled={isChildrenIncreaseDisabled} onClick={handleAddChildByRoomId}>Add child</button>
-        <button type="button" onClick={handleRemoveChildByRoomId}>Remove child</button>
-      </p>
-      <h3>
-        Room
-        {id + 1}
-      </h3>
-      <div>
-        Adults:
-        {adults}
+    <div className="room">
+      <div className="col">
+        <h3>
+          Room
+          {' '}
+          {id + 1}
+        </h3>
       </div>
-      <div>
+      <div className="col right">
+        {!isRoomRemoveDisabled && (
+          <button type="button" onClick={handleRemoveRoom} className="room_removeBtn">Remove room</button>
+        )}
+      </div>
+
+      <div className="col">
+        Adults
+      </div>
+      <div className="col right">
+        <div className="action_buttons">
+          <div className="action_buttons_wrapper">
+            <Button
+              disabled={isAdultsDecreaseDisabled}
+              onClick={handleRemoveAdultByRoomId}
+              icon={<MinusIcon />}
+            />
+            {adults}
+            <Button
+              disabled={isAdultsIncreaseDisabled}
+              onClick={handleAddAdultByRoomId}
+              icon={<PlusIcon />}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="col">
         Children
-        {' '}
-        {childrenCount}
       </div>
-      {childrenCount ? childrenAges.map((age, i) => (
-        <Child
-          key={i.toString()}
-          age={age}
-          onRemove={() => handleRemoveChildById(i)}
-          onChangeAge={(selectedAge) => handleChangeChildAgeById(i, selectedAge)}
-        />
-      )) : null}
+      <div className="col right">
+        <div className="action_buttons">
+          <div className="action_buttons_wrapper">
+            <Button
+              disabled={isChildrenDecreaseDisabled}
+              onClick={handleRemoveChildByRoomId}
+              icon={<MinusIcon />}
+            />
+            {childrenCount}
+            <Button
+              disabled={isChildrenIncreaseDisabled}
+              onClick={handleAddChildByRoomId}
+              icon={<PlusIcon />}
+            />
+          </div>
+        </div>
+      </div>
+
+      {childrenCount ? (
+        <div className="room_children">
+          {childrenAges.map((age, i) => (
+            <Child
+              key={i.toString()}
+              number={i + 1}
+              age={R.isNil(age) ? -1 : age}
+              onRemove={() => handleRemoveChildById(i)}
+              onChangeAge={(selectedAge) => handleChangeChildAgeById(i, selectedAge)}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

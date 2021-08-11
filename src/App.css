@@ -1,2 +1,61 @@
-.App {
+.app {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 1px rgba(68, 80, 95, 0.08), 0 1px 4px rgba(68, 80, 95, 0.2);
+    font-weight: 600;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_closeBtn {
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 17px;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.col {
+    width: 50%;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.col.right {
+    text-align: right;
+}
+
+.stickyContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.stickyContainer_content {
+    padding: 20px 16px 32px;
+    background: #fff;
+}
+
+.action_buttons {
+    width: 100%;
+    max-width: 300px;
+    display: inline-block;
+}
+
+.action_buttons_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
