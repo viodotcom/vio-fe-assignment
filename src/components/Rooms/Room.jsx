@@ -11,8 +11,7 @@ import {
   incChildByRoomId,
   decChildByRoomId,
   removeChildById,
-  incChildAgeById,
-  decChildAgeById,
+  changeChildAgeById,
 } from '../../store/actions';
 import {
   isAdultsIncDisabled,
@@ -32,8 +31,7 @@ export function Room({
   const handleAddChildByRoomId = () => dispatch(incChildByRoomId(id));
   const handleRemoveChildByRoomId = () => dispatch(decChildByRoomId(id));
   const handleRemoveChildById = (childId) => dispatch(removeChildById(id, childId));
-  const handleIncChildAgeById = (childId) => dispatch(incChildAgeById(id, childId));
-  const handleDecChildAgeById = (childId) => dispatch(decChildAgeById(id, childId));
+  const handleChangeChildAgeById = (childId, age) => dispatch(changeChildAgeById(id, childId, age));
 
   const isAdultsIncreaseDisabled = useSelector((state) => isAdultsIncDisabled(state, id));
   const isAdultsDecreaseDisabled = useSelector((state) => isAdultsDecDisabled(state, id));
@@ -71,8 +69,7 @@ export function Room({
           key={i.toString()}
           age={age}
           onRemove={() => handleRemoveChildById(i)}
-          onIncAge={() => handleIncChildAgeById(i)}
-          onDecAge={() => handleDecChildAgeById(i)}
+          onChangeAge={(selectedAge) => handleChangeChildAgeById(i, selectedAge)}
         />
       )) : null}
     </div>

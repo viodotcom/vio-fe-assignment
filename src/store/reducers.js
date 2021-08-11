@@ -115,17 +115,9 @@ export const roomsReducer = (state = initialRoomsState, action) => {
       return R.update(roomId, state[roomId], state);
     }
 
-    case 'INC_CHILD_AGE_BY_ID': {
-      const { roomId, childId } = payload;
-      state[roomId].childrenAges[childId] += 1;
-      return R.update(roomId, state[roomId], state);
-    }
-
-    case 'DEC_CHILD_AGE_BY_ID': {
-      const { roomId, childId } = payload;
-      if (state[roomId].childrenAges[childId] > 0) {
-        state[roomId].childrenAges[childId] -= 1;
-      }
+    case 'CHANGE_CHILD_AGE_BY_ID': {
+      const { roomId, childId, age } = payload;
+      state[roomId].childrenAges[childId] = Number(age);
       return R.update(roomId, state[roomId], state);
     }
 

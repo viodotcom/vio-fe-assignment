@@ -36,14 +36,9 @@ export const removeChildById = (roomId, childId) => ({
   payload: { roomId, childId },
 });
 
-export const incChildAgeById = (roomId, childId) => ({
-  type: 'INC_CHILD_AGE_BY_ID',
-  payload: { roomId, childId },
-});
-
-export const decChildAgeById = (roomId, childId) => ({
-  type: 'DEC_CHILD_AGE_BY_ID',
-  payload: { roomId, childId },
+export const changeChildAgeById = (roomId, childId, age) => ({
+  type: 'CHANGE_CHILD_AGE_BY_ID',
+  payload: { roomId, childId, age },
 });
 
 export const resetToInitial = () => ({
