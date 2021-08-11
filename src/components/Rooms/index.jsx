@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { serializeRoomsData } from '../../libs/url';
 import { MAX_ROOMS_COUNT } from '../../constants';
 import { addRoom } from '../../store/actions';
-import './index.css';
 import { Room } from './Room';
 import Button from '../ui/Button';
 import { ReactComponent as PlusIcon } from '../../icons/plus.svg';
 import { ReactComponent as LensIcon } from '../../icons/lens.svg';
+import './index.css';
 
 const Rooms = () => {
   const rooms = useSelector((state) => state.rooms);

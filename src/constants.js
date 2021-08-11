@@ -6,3 +6,4 @@ export const MAX_ROOMS_COUNT = 8;
 export const MIN_ADULTS_FOR_ROOM_COUNT = 1;
 export const MAX_CHILDREN_FOR_ROOM_COUNT = 3;
 export const MAX_ROOM_OCCUPANCY_COUNT = 5;
+export const MAX_CHILD_AGE = 16;

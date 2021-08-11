@@ -23,6 +23,7 @@ import {
 import Button from '../ui/Button';
 import { ReactComponent as PlusIcon } from '../../icons/plus.svg';
 import { ReactComponent as MinusIcon } from '../../icons/minus.svg';
+import { MAX_CHILD_AGE } from '../../constants';
 
 export function Room({
   id, adults, childrenAges,
@@ -42,6 +43,8 @@ export function Room({
   const isChildrenIncreaseDisabled = useSelector((state) => isChildrenIncDisabled(state, id));
   const isChildrenDecreaseDisabled = useSelector((state) => isChildrenDecDisabled(state, id));
   const isRoomRemoveDisabled = useSelector(() => isRoomRemovingDisabled(id));
+
+  const childAges = [...Array(MAX_CHILD_AGE + 1).keys()];
 
   return (
     <div className="room">
@@ -105,10 +108,11 @@ export function Room({
           {childrenAges.map((age, i) => (
             <Child
               key={i.toString()}
-              number={i + 1}
+              id={i}
               age={R.isNil(age) ? -1 : age}
-              onRemove={() => handleRemoveChildById(i)}
-              onChangeAge={(selectedAge) => handleChangeChildAgeById(i, selectedAge)}
+              ages={childAges}
+              onRemove={handleRemoveChildById}
+              onChangeAge={handleChangeChildAgeById}
             />
           ))}
         </div>

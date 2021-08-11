@@ -7,18 +7,22 @@ import Select from '../ui/Select';
 import './Child.css';
 
 export function Child({
-  number,
+  id,
   age,
+  ages,
   onRemove,
   onChangeAge,
 }) {
+  const handleOnChange = (e) => onChangeAge(id, e.currentTarget.value);
+  const handleOnRemove = () => onRemove(id);
+
   return (
     <div>
       <div className="col">
         <div className="child_caption">
           Child
           {' '}
-          {number}
+          {id + 1}
           {' '}
           age
         </div>
@@ -28,22 +32,15 @@ export function Child({
           <div className="action_buttons_wrapper">
             <Select
               value={age}
-              onChange={(e) => onChangeAge(e.currentTarget.value)}
+              onChange={handleOnChange}
               className="child_select"
             >
               <option value="-1">Age</option>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
+              {ages.map((a) => (<option key={a.toString()} value={a}>{a}</option>))}
             </Select>
             <Button
               transparent
-              onClick={onRemove}
+              onClick={handleOnRemove}
               icon={<CrosIcon />}
               className="child_removeBtn"
             />
