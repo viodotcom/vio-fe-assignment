@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { ReactComponent as CrosIcon } from '../../icons/cros_red.svg';
+import { ReactComponent as CrossIcon } from '../../icons/cross_red.svg';
 import Button from '../ui/Button';
 import Select from '../ui/Select';
-
 import './Child.css';
 
 export function Child({
@@ -13,8 +12,8 @@ export function Child({
   onRemove,
   onChangeAge,
 }) {
-  const handleOnChange = (e) => onChangeAge(id, e.currentTarget.value);
-  const handleOnRemove = () => onRemove(id);
+  const handleOnChange = React.useCallback((e) => onChangeAge(id, e.currentTarget.value), [onChangeAge]);
+  const handleOnRemove = React.useCallback(() => onRemove(id), [onRemove, id]);
 
   return (
     <div>
@@ -41,7 +40,7 @@ export function Child({
             <Button
               transparent
               onClick={handleOnRemove}
-              icon={<CrosIcon />}
+              icon={<CrossIcon />}
               className="child_removeBtn"
             />
           </div>

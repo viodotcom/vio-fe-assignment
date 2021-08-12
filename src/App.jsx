@@ -4,12 +4,12 @@ import { useDispatch } from 'react-redux';
 import { getRoomsFromUrl, resetToInitial } from './store/actions';
 import Rooms from './components/Rooms';
 import './App.css';
-import { ReactComponent as CrosIcon } from './icons/cros.svg';
+import { ReactComponent as CrossIcon } from './icons/cross.svg';
 import Button from './components/ui/Button';
 
 function App() {
   const dispatch = useDispatch();
-  const handleResetToInitial = () => dispatch(resetToInitial());
+  const handleResetToInitial = React.useCallback(() => dispatch(resetToInitial()), [dispatch]);
 
   useEffect(() => {
     dispatch(getRoomsFromUrl());
@@ -21,7 +21,7 @@ function App() {
         <Button
           transparent
           onClick={handleResetToInitial}
-          icon={<CrosIcon />}
+          icon={<CrossIcon />}
           className="header_closeBtn"
         />
         {' '}

@@ -2,8 +2,6 @@ import * as R from 'ramda';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Child } from './Child';
-import './Room.css';
 import {
   removeRoomById,
   incAdultByRoomId,
@@ -20,23 +18,28 @@ import {
   isChildrenDecDisabled,
   isRoomRemovingDisabled,
 } from '../../store/reducers';
+import { MAX_CHILD_AGE } from '../../constants';
+import { Child } from './Child';
 import Button from '../ui/Button';
 import { ReactComponent as PlusIcon } from '../../icons/plus.svg';
 import { ReactComponent as MinusIcon } from '../../icons/minus.svg';
-import { MAX_CHILD_AGE } from '../../constants';
+import './Room.css';
 
 export function Room({
-  id, adults, childrenAges,
+  id,
+  adults,
+  childrenAges,
 }) {
   const dispatch = useDispatch();
   const childrenCount = childrenAges ? R.length(childrenAges) : 0;
-  const handleRemoveRoom = () => dispatch(removeRoomById(id));
-  const handleAddAdultByRoomId = () => dispatch(incAdultByRoomId(id));
-  const handleRemoveAdultByRoomId = () => dispatch(decAdultByRoomId(id));
-  const handleAddChildByRoomId = () => dispatch(incChildByRoomId(id));
-  const handleRemoveChildByRoomId = () => dispatch(decChildByRoomId(id));
-  const handleRemoveChildById = (childId) => dispatch(removeChildById(id, childId));
-  const handleChangeChildAgeById = (childId, age) => dispatch(changeChildAgeById(id, childId, age));
+
+  const handleRemoveRoom = React.useCallback(() => dispatch(removeRoomById(id)), [id]);
+  const handleAddAdultByRoomId = React.useCallback(() => dispatch(incAdultByRoomId(id)), [id]);
+  const handleRemoveAdultByRoomId = React.useCallback(() => dispatch(decAdultByRoomId(id)), [id]);
+  const handleAddChildByRoomId = React.useCallback(() => dispatch(incChildByRoomId(id)), [id]);
+  const handleRemoveChildByRoomId = React.useCallback(() => dispatch(decChildByRoomId(id)), [id]);
+  const handleRemoveChildById = React.useCallback((childId) => dispatch(removeChildById(id, childId)), [id]);
+  const handleChangeChildAgeById = React.useCallback((childId, age) => dispatch(changeChildAgeById(id, childId, age)), [id]);
 
   const isAdultsIncreaseDisabled = useSelector((state) => isAdultsIncDisabled(state, id));
   const isAdultsDecreaseDisabled = useSelector((state) => isAdultsDecDisabled(state, id));
@@ -44,7 +47,7 @@ export function Room({
   const isChildrenDecreaseDisabled = useSelector((state) => isChildrenDecDisabled(state, id));
   const isRoomRemoveDisabled = useSelector(() => isRoomRemovingDisabled(id));
 
-  const childAges = [...Array(MAX_CHILD_AGE + 1).keys()];
+  const childAges = React.useRef([...Array(MAX_CHILD_AGE + 1).keys()]);
 
   return (
     <div className="room">
@@ -110,7 +113,7 @@ export function Room({
               key={i.toString()}
               id={i}
               age={R.isNil(age) ? -1 : age}
-              ages={childAges}
+              ages={childAges.current}
               onRemove={handleRemoveChildById}
               onChangeAge={handleChangeChildAgeById}
             />

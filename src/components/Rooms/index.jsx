@@ -2,8 +2,8 @@ import * as R from 'ramda';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { serializeRoomsData } from '../../libs/url';
 import { MAX_ROOMS_COUNT } from '../../constants';
+import { serializeRoomsData } from '../../libs/url';
 import { addRoom } from '../../store/actions';
 import { Room } from './Room';
 import Button from '../ui/Button';
@@ -14,7 +14,7 @@ import './index.css';
 const Rooms = () => {
   const rooms = useSelector((state) => state.rooms);
   const dispatch = useDispatch();
-  const handleAddRoom = () => dispatch(addRoom());
+  const handleAddRoom = React.useCallback(() => dispatch(addRoom()), [dispatch, addRoom]);
 
   return (
     <div className="rooms">

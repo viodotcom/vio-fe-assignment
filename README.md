@@ -25,4 +25,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Documentation
 
-> here you can document your decisions. ✍️
+Rooms data in URL should be recieved by query parameter ```roomData```, and the right URL with rooms data looks like ```URL http://localhost:3001/?roomsData=1:4,6|3```

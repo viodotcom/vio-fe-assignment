@@ -30,6 +30,7 @@ const validateRoomsData = (rooms) => {
       return true;
     }
 
+    // eslint-disable-next-line no-console
     console.log('Room data is not valide', room);
     return false;
   };
