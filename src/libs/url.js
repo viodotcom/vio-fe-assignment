@@ -22,7 +22,7 @@ export const getRoomsDataFromQueryParams = () => {
   return deserializeRoomsData(roomsDataStr);
 };
 
-export const serializeRoomsData = (rooms) => {
+export const serializeRoomsDataToQueryParams = (rooms) => {
   const urlSearchParams = new URLSearchParams(window.location.search);
   let resultString = '';
 

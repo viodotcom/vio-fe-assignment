@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { MAX_ROOMS_COUNT } from '../../constants';
-import { serializeRoomsData } from '../../libs/url';
+import { serializeRoomsDataToQueryParams } from '../../libs/url';
 import { addRoom } from '../../store/actions';
 import { Room } from './Room';
 import Button from '../ui/Button';
@@ -44,7 +44,7 @@ const Rooms = () => {
             contained
             fullwidth
             disabled={!R.length(rooms)}
-            onClick={() => serializeRoomsData(rooms)}
+            onClick={() => serializeRoomsDataToQueryParams(rooms)}
             icon={<LensIcon />}
           >
             Search
