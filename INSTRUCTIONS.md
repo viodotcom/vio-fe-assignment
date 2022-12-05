@@ -1,6 +1,6 @@
-# FindHotel Front-end Engineer Assignment
+# Vio.com Front-end Engineer Assignment
 
-Thanks for applying for the Front-end Engineer position at FindHotel!
+Thanks for applying for the Front-end Engineer position at Vio.com!
 
 This coding challenge will serve as the first step of technical evaluation in the hiring process, the goal is to show case how you work and if it is decided to proceed with the process, will be the starting point of our technical interview.
 
@@ -12,9 +12,9 @@ We don't assign a fixed time deadline for it, but after you’ve read the assign
 
 ## Technology and Frameworks
 
-This project is based on React as that is what we use here at FindHotel, however this is not a hard requirement. If you prefer to use another technology, feel free to set up the assignment with your tools of choice.
+This project is based on React as that is what we use here at Vio.com, however this is not a hard requirement. If you prefer to use another technology, feel free to set up the assignment with your tools of choice.
 
-We use Redux at FindHotel, but again you're free to choose any state management technology you'd like.
+We use Redux at Vio.com, but again you're free to choose any state management technology you'd like.
 
 Finally, we prefer to use a typed dialect such as TypeScript or Flow, so it is a plus for you to showcase the use of it, but you are allowed to use any JS flavor.
 

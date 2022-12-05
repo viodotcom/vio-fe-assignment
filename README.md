@@ -1,6 +1,6 @@
-# FindHotel Front-end Engineer Assignment
+# Vio.com Front-end Engineer Assignment
 
-Thanks for applying for the Front-end Engineer position at FindHotel!
+Thanks for applying for the Front-end Engineer position at Vio.com!
 
 You can find the instructions [here](INSTRUCTIONS.md)
 
