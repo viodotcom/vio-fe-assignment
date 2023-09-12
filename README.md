@@ -1,19 +1,19 @@
 # Vio.com Front-end Engineer Assignment
 
-Thanks for applying for the Front-end Engineer position at Vio.com!
+Thanks for applying for the Frontend Engineer position at Vio.com!
 
 You can find the instructions [here](INSTRUCTIONS.md)
 
 ## The sample project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Vite](https://vitejs.dev/).
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
+Open [http://localhost:5173/](http://localhost:5173/) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
@@ -25,4 +25,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Documentation
 
-> here you can document your decisions. ✍️
+> Document your decisions here. ✍️

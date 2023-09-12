@@ -1,6 +1,6 @@
-# Vio.com Front-end Engineer Assignment
+# Vio.com Frontend Engineer Assignment
 
-Thanks for applying for the Front-end Engineer position at Vio.com!
+Thanks for applying for the Frontend Engineer position at Vio.com!
 
 This coding challenge will serve as the first step of technical evaluation in the hiring process, the goal is to show case how you work and if it is decided to proceed with the process, will be the starting point of our technical interview.
 
@@ -18,7 +18,7 @@ We use Redux at Vio.com, but again you're free to choose any state management te
 
 Finally, we prefer to use a typed dialect such as TypeScript or Flow, so it is a plus for you to showcase the use of it, but you are allowed to use any JS flavor.
 
-Styling can be done via CSS, or a CSS-in-JS framework of your choice (we use https://github.com/emotion-js/emotion).
+Styling can be done via CSS, or a CSS-in-JS framework of your choice (we use [Emotion](https://github.com/emotion-js/emotion)).
 
 ## The assignment
 
