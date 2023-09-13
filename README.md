@@ -1,4 +1,4 @@
-# Vio.com Front-end Engineer Assignment
+# Vio.com Frontend Engineer Assignment
 
 Thanks for applying for the Frontend Engineer position at Vio.com!
 

@@ -35,15 +35,18 @@ Please see the following screenshots for the designs to build. You can focus on 
 ### Business requirements
 
 #### Input and output
+
 The component should receive its initial state as a string, allow the user to update the state via manipulating the UI, and emit its output as a serialized string.
 You should be able to pass the Guests and Rooms configuration in via the URL in this encoded manner. The URL should be updated with this serialized string when the component state is "comitted" (via the `Search` button) to allow for sharing.
 
 The rules for the output format are the following:
+
 - Rooms are separated by pipe `|`
 - Adults and children are separated by colon `:`
 - Children ages are separated by comma `,`
 
 ##### Examples
+
 * "1:4,6|3" → Two rooms, one with one adult and two children ages four and six and the other with three adults and no children
 * "3" → One room with three adults and no children
 * "2:4" → One room with two adults and one child aged four
@@ -52,6 +55,7 @@ The rules for the output format are the following:
 Note: Keep in mind this is the serialized representation of a valid component state, you can keep a different intermediate data structure of your choice to manage internal state.
 
 #### Functional requirements
+
 These are the requirements the component need to abide to be deemed functional.
 
 * Up to eight rooms can be added
