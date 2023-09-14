@@ -10,7 +10,7 @@ function App() {
         </a>
       </div>
       <h1>Vio.com</h1>
-      <p>Frontend Engineer Assessment</p>
+      <p>Frontend Engineer Assignment</p>
     </>
   );
 }
