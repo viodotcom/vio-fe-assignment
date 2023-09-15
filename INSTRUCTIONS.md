@@ -1,6 +1,6 @@
-# Vio.com Front-end Engineer Assignment
+# Vio.com Frontend Engineer Assignment
 
-Thanks for applying for the Front-end Engineer position at Vio.com!
+Thanks for applying for the Frontend Engineer position at Vio.com!
 
 This coding challenge will serve as the first step of technical evaluation in the hiring process, the goal is to show case how you work and if it is decided to proceed with the process, will be the starting point of our technical interview.
 
@@ -18,7 +18,7 @@ We use Redux at Vio.com, but again you're free to choose any state management te
 
 Finally, we prefer to use a typed dialect such as TypeScript or Flow, so it is a plus for you to showcase the use of it, but you are allowed to use any JS flavor.
 
-Styling can be done via CSS, or a CSS-in-JS framework of your choice (we use https://github.com/emotion-js/emotion).
+Styling can be done via CSS, or a CSS-in-JS framework of your choice (we use [Emotion](https://github.com/emotion-js/emotion)).
 
 ## The assignment
 
@@ -35,15 +35,18 @@ Please see the following screenshots for the designs to build. You can focus on 
 ### Business requirements
 
 #### Input and output
+
 The component should receive its initial state as a string, allow the user to update the state via manipulating the UI, and emit its output as a serialized string.
 You should be able to pass the Guests and Rooms configuration in via the URL in this encoded manner. The URL should be updated with this serialized string when the component state is "comitted" (via the `Search` button) to allow for sharing.
 
 The rules for the output format are the following:
+
 - Rooms are separated by pipe `|`
 - Adults and children are separated by colon `:`
 - Children ages are separated by comma `,`
 
 ##### Examples
+
 * "1:4,6|3" → Two rooms, one with one adult and two children ages four and six and the other with three adults and no children
 * "3" → One room with three adults and no children
 * "2:4" → One room with two adults and one child aged four
@@ -52,6 +55,7 @@ The rules for the output format are the following:
 Note: Keep in mind this is the serialized representation of a valid component state, you can keep a different intermediate data structure of your choice to manage internal state.
 
 #### Functional requirements
+
 These are the requirements the component need to abide to be deemed functional.
 
 * Up to eight rooms can be added
