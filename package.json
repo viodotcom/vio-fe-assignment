@@ -33,7 +33,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-svg-transformer": "^1.0.0",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.12"
   },
   "jest": {
     "testEnvironment": "jsdom",
