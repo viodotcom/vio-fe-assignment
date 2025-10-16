@@ -1,28 +1,58 @@
-# Vio.com Frontend Engineer Assignment
+# Frontend Take-Home Assignment - Senior Frontend Position
 
-Thanks for applying for the Frontend Engineer position at Vio.com!
+Hello, and thank you for taking the time to complete our take-home assignment! We've designed this task to simulate a real-world engineering challenge here at Vio.com and to give you a chance to showcase your skills and thought process.
 
-You can find the instructions [here](INSTRUCTIONS.md)
+## Overview
 
-## The sample project
+This repository contains a Frontend Take-Home Assignment for candidates applying for a Frontend Developer Position at Vio.com. The challenge focuses on building a hotels search widget with an autocomplete search bar.
 
-This project was bootstrapped with [Vite](https://vitejs.dev/).
+This assignment is designed to be completed in approximately 4-8 hours.
 
-In the project directory, you can run:
+### Technical Stack
+- **Styling**: Tailwind CSS
+- **API**: Vio Partners API (API Profile Key will be provided)
+- **Framework**: Next.js/React
 
-### `npm run dev`
+### API Documentation
+- **Endpoint**: [Vio Partners API](https://developers.vio.com/docs/category/partners-api)
+- **API Profile Key**: Will be provided separately
 
-Runs the app in the development mode.
-Open [http://localhost:5173/](http://localhost:5173/) to view it in the browser.
+## The Challenge
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Create a hotels search widget with an autocomplete search bar, date pickers, a guest count input and a search button. Display the results as a hotel list below the input fields.
 
-### `npm test`
+You can find more detailed instructions [here](src/components/HotelsSearchWidget/README.md).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Implementation Notes
 
-## Documentation
+- Implement the solution the same way you would in a real-world project, including changing the existing components and codebase as you see fit
+- Apply your expertise and best judgment. We value code that is robust, performant, and provides a great user experience
+- Use the existing UI components from `/src/components/ui`
+- Follow the API patterns established in `lib/api/vio-api.ts`
+- You can use AI to help you with the assignment. If you do, please include a brief summary in your `NOTES.md` file of which tools you used and for what purpose
 
-> Document your decisions here. ✍️
+## Getting Started
+
+1.  Clone this repository to your local machine
+2.  **Set up your API Key**: Rename the `.env.example` file in the root directory to `.env.local`. Add the API key we provided to you inside this file
+3.  Install the required dependencies: `npm install`
+4.  Run the development server: `npm run dev`
+5.  Open [http://localhost:3000](http://localhost:3000) to see the application
+
+## Submission
+
+Please provide:
+1. Create a new private GitHub repository with this codebase
+2. Create a pull request (PR) with all your changes, including:
+   - Your HotelsSearchWidget component
+   - All other changes you made to the codebase
+   - An updated `NOTES.md` file with a brief explanation of your approach and any improvements made, as well as any notes about your AI usage
+3. Add the [findhotel-reviewers](https://github.com/findhotel-reviewers) user as a reviewer to your PR
+
+## Questions?
+
+If you have any questions about the challenge, please don't hesitate to reach out. We're looking forward to seeing your solution!
+
+---
+
+*Good luck, and have fun!*
