@@ -1,4 +1,12 @@
+import HotelCardWidget from "@/components/HotelCardWidget";
+import { formatDate, addDays } from "@/lib/utils/date";
+
 export default function Home() {
+  const today = new Date();
+  const tomorrow = addDays(today, 1);
+  const initialCheckIn = formatDate(today);
+  const initialCheckOut = formatDate(tomorrow);
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4">
@@ -14,11 +22,12 @@ export default function Home() {
               Hotel Card Widget
             </h2>
             <div className="w-full">
-              <iframe
-                src="/widgets/hotel-card?hotelId=1043289&checkIn=2026-01-15&checkOut=2026-01-16&guestCount=2"
-                className="w-full h-[462px] border-0 rounded-lg"
-                title="HotelCardWidget Demo"
-                sandbox="allow-scripts allow-same-origin"
+              <HotelCardWidget
+                hotelId="1043289"
+                initialCheckIn={initialCheckIn}
+                initialCheckOut={initialCheckOut}
+                initialGuestCount={2}
+                className="w-full"
               />
             </div>
           </div>

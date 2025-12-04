@@ -19,17 +19,17 @@ This assignment is designed to be completed in approximately 4-8 hours.
 
 ## The Challenge
 
-Create a hotels search widget with an autocomplete search bar, date pickers, a guest count input and a search button. Display the results as a hotel list below the input fields.
+Create a hotels search widget with an autocomplete search bar, date pickers, a guest count input and auto search functionality. Display the results as a hotel list below the input fields.
 
 You can find more detailed instructions [here](src/components/HotelsSearchWidget/README.md).
 
 ### Implementation Notes
 
-- Implement the solution the same way you would in a real-world project, including changing the existing components and codebase as you see fit
+- Remember, we are assessing how you would work in a real-world project, so focus on demonstrating this in your code. This includes changing the existing components and codebase as you see fit.
 - Apply your expertise and best judgment. We value code that is robust, performant, and provides a great user experience
 - Use the existing UI components from `/src/components/ui`
 - Follow the API patterns established in `lib/api/vio-api.ts`
-- You can use AI to help you with the assignment. If you do, please include a brief summary in your `NOTES.md` file of which tools you used and for what purpose
+- You can use AI to help you with the assignment. If you do, please include a summary in your `NOTES.md` file of which tools you used and for what purpose
 
 ## Getting Started
 
@@ -41,13 +41,13 @@ You can find more detailed instructions [here](src/components/HotelsSearchWidget
 
 ## Submission
 
-Please provide:
-1. Create a new private GitHub repository with this codebase
-2. Create a pull request (PR) with all your changes, including:
+Submit your solution by:
+1. Creating a new private GitHub repository with this codebase
+2. Creating a pull request (PR) with all your changes, including:
    - Your HotelsSearchWidget component
    - All other changes you made to the codebase
    - An updated `NOTES.md` file with a brief explanation of your approach and any improvements made, as well as any notes about your AI usage
-3. Add the [findhotel-reviewers](https://github.com/findhotel-reviewers) user as a reviewer to your PR
+3. Adding the [findhotel-reviewers](https://github.com/findhotel-reviewers) user as a reviewer to your PR
 
 ## Questions?
 
